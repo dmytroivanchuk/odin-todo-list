@@ -1,9 +1,9 @@
 import "./preflight.css";
 import "./index.css";
-import Storage from "./storage";
-import ToDo from "./to-do";
-import Project from "./project";
-import List from "./list";
+import Storage from "./model/storage";
+import ToDo from "./model/to-do";
+import Project from "./model/project";
+import List from "./model/list";
 
 const storage = new Storage();
 initializeInbox();
