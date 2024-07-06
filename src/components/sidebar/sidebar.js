@@ -24,10 +24,5 @@ export default function createSidebarComponent({ listsInfo, projectsInfo }) {
   });
   nav.append(ul);
   aside.append(nav);
-  const footer = document.createElement("footer");
-  footer.classList.add("footer");
-  const newProjectButton = createNewProjectButtonComponent();
-  footer.append(newProjectButton);
-  aside.append(footer);
   return aside;
 }

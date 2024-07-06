@@ -1,4 +1,15 @@
 .project-container {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  padding: 0.1rem 0.7rem 0.1rem 0.4rem;
+  border-radius: 0.3rem;
+  align-items: center;
+
+  & .project-icon {
+    width: 1.3rem;
+  }
+
+  & .project-title {
+    font-size: 0.9rem;
+  }
 }

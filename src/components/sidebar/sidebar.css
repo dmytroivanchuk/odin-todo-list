@@ -1,20 +1,14 @@
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #f2f4f7;
-  background-color: #f9fafb;
+  grid-area: sidebar;
+  background-color: #f5f6f8;
 
-  .navigation {
-    padding: 1rem;
+  & .navigation {
+    padding: 0.8rem;
 
-    .lists-projects-container {
+    & .lists-projects-container {
       display: flex;
       flex-direction: column;
+      gap: 0.1rem;
     }
-  }
-
-  .footer {
-    border-top: 1px solid #f2f4f7;
-    padding: 0.5rem;
   }
 }

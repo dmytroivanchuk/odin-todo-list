@@ -4,14 +4,22 @@ import Storage from "./model/storage";
 import ToDo from "./model/to-do";
 import Project from "./model/project";
 import List from "./model/list";
+import createSidebarComponent from "./components/sidebar/sidebar";
+import createSidebarFooterComponent from "./components/sidebar-footer/sidebar-footer";
+import inboxIcon from "./inbox.svg";
+import circleOutlineIcon from "./circle-outline.svg";
 
+const body = document.querySelector("body");
 const storage = new Storage();
 initializeInbox();
 initializeStartingProject();
+addSidebar();
+addSidebarFooter();
 
 function initializeInbox() {
   const inbox = new List();
   inbox.title = "Inbox";
+  inbox.icon = inboxIcon;
   storage.addList(inbox);
 }
 
@@ -55,6 +63,7 @@ function initializeStartingProject() {
   startingProject.title = "Learn the basics";
   startingProject.description =
     "This project shows you everything you need to know to hit the ground running.";
+  startingProject.icon = circleOutlineIcon;
   startingProject.toDos = [
     doubleClickToDo,
     createToDo,
@@ -65,4 +74,25 @@ function initializeStartingProject() {
     doneToDo,
   ];
   storage.addProject(startingProject);
+}
+
+function addSidebar() {
+  const listsInfo = storage
+    .getLists()
+    .map((list) => ({
+      title: list.title,
+      icon: list.icon,
+      toDosCount: list.toDosCount,
+    }));
+  const projectsInfo = storage
+    .getProjects()
+    .map((project) => ({ title: project.title, icon: project.icon }));
+
+  const sidebar = createSidebarComponent({ listsInfo, projectsInfo });
+  body.append(sidebar);
+}
+
+function addSidebarFooter() {
+  const sidebarFooter = createSidebarFooterComponent();
+  body.append(sidebarFooter);
 }

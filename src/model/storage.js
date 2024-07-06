@@ -13,4 +13,12 @@ export default class Storage {
     const projectsJSON = JSON.stringify(this.#projects);
     localStorage.setItem("projects", projectsJSON);
   }
+
+  getLists() {
+    return this.#lists;
+  }
+
+  getProjects() {
+    return this.#projects;
+  }
 }
