@@ -1,20 +1,20 @@
-.new-project-button {
+.new-button {
   display: flex;
   align-items: center;
   padding: 0.2rem 0.7rem 0.2rem 0.3rem;
   border-radius: 0.3rem;
-  border: 1px solid #f5f6f8;
+  border: 1px solid transparent;
   gap: 0.4rem;
 
   &:hover {
     border-color: #e7e9ec;
   }
 
-  & .new-project-button-icon {
+  & .new-button-icon {
     width: 1.2rem;
   }
 
-  & .new-project-button-title {
+  & .new-button-title {
     color: #585c60;
     font-size: 0.8rem;
   }

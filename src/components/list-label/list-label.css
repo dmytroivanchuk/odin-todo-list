@@ -1,20 +1,20 @@
-.list-container {
+.list-label-container {
   display: flex;
   gap: 0.3rem;
   padding: 0.1rem 0.7rem 0.1rem 0.4rem;
   border-radius: 0.3rem;
   align-items: center;
 
-  & .list-icon {
+  & .list-label-icon {
     width: 1.3rem;
   }
 
-  & .list-title {
+  & .list-label-title {
     font-weight: 500;
     font-size: 0.9rem;
   }
 
-  .list-to-dos-count {
+  & .list-label-to-dos-count {
     margin-left: auto;
     color: #8a9099;
     font-size: 0.9rem;

@@ -1,10 +1,10 @@
 import "./sidebar-footer.css";
-import createNewProjectButtonComponent from "../new-project-button/new-project-button";
+import createNewButtonComponent from "../new-button/new-button";
 
 export default function createSidebarFooterComponent() {
   const sidebarFooter = document.createElement("footer");
   sidebarFooter.classList.add("sidebar-footer");
-  const newProjectButton = createNewProjectButtonComponent();
+  const newProjectButton = createNewButtonComponent("Project");
   sidebarFooter.append(newProjectButton);
   return sidebarFooter;
 }

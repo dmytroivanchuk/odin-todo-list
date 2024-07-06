@@ -8,13 +8,17 @@ import createSidebarComponent from "./components/sidebar/sidebar";
 import createSidebarFooterComponent from "./components/sidebar-footer/sidebar-footer";
 import inboxIcon from "./inbox.svg";
 import circleOutlineIcon from "./circle-outline.svg";
+import createContentComponent from "./components/content/content";
+import createContentFooterComponent from "./components/content-footer/content-footer";
 
 const body = document.querySelector("body");
 const storage = new Storage();
 initializeInbox();
 initializeStartingProject();
 addSidebar();
+addContent();
 addSidebarFooter();
+addContentFooter();
 
 function initializeInbox() {
   const inbox = new List();
@@ -77,13 +81,11 @@ function initializeStartingProject() {
 }
 
 function addSidebar() {
-  const listsInfo = storage
-    .getLists()
-    .map((list) => ({
-      title: list.title,
-      icon: list.icon,
-      toDosCount: list.toDosCount,
-    }));
+  const listsInfo = storage.getLists().map((list) => ({
+    title: list.title,
+    icon: list.icon,
+    toDosCount: list.toDosCount,
+  }));
   const projectsInfo = storage
     .getProjects()
     .map((project) => ({ title: project.title, icon: project.icon }));
@@ -92,7 +94,17 @@ function addSidebar() {
   body.append(sidebar);
 }
 
+function addContent() {
+  const content = createContentComponent();
+  body.append(content);
+}
+
 function addSidebarFooter() {
   const sidebarFooter = createSidebarFooterComponent();
   body.append(sidebarFooter);
+}
+
+function addContentFooter() {
+  const contentFooter = createContentFooterComponent();
+  body.append(contentFooter);
 }

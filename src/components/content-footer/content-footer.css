@@ -1,0 +1,8 @@
+.content-footer {
+  grid-area: content-footer;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}

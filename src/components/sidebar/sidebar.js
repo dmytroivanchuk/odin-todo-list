@@ -1,7 +1,7 @@
 import "./sidebar.css";
-import createListComponent from "../list/list";
-import createProjectComponent from "../project/project";
-import createNewProjectButtonComponent from "../new-project-button/new-project-button";
+import createListLabelComponent from "../list-label/list-label";
+import createProjectLabelComponent from "../project-label/project-label";
+import createNewButtonComponent from "../new-button/new-button";
 
 export default function createSidebarComponent({ listsInfo, projectsInfo }) {
   const aside = document.createElement("aside");
@@ -12,13 +12,13 @@ export default function createSidebarComponent({ listsInfo, projectsInfo }) {
   ul.classList.add("lists-projects-container");
   listsInfo.forEach((listInfo) => {
     const li = document.createElement("li");
-    const listComponent = createListComponent(listInfo);
+    const listComponent = createListLabelComponent(listInfo);
     li.append(listComponent);
     ul.append(li);
   });
   projectsInfo.forEach((projectInfo) => {
     const li = document.createElement("li");
-    const projectComponent = createProjectComponent(projectInfo);
+    const projectComponent = createProjectLabelComponent(projectInfo);
     li.append(projectComponent);
     ul.append(li);
   });

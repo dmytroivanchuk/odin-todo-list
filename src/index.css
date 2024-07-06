@@ -2,8 +2,8 @@ body {
   height: 100vh;
   display: grid;
   grid-template-areas:
-    "sidebar main"
-    "sidebar-footer main-footer";
+    "sidebar content"
+    "sidebar-footer content-footer";
   grid-template-rows: 1fr auto;
   grid-template-columns: minmax(auto, 13rem) 1fr;
   gap: 1px;
