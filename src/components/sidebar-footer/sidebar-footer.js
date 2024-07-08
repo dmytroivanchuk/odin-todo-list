@@ -1,5 +1,5 @@
 import "./sidebar-footer.css";
-import createNewButtonComponent from "../new-button/new-button";
+import createNewButtonComponent from "../shared/new-button/new-button";
 
 export default function createSidebarFooterComponent() {
   const sidebarFooter = document.createElement("footer");

@@ -1,0 +1,13 @@
+.project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .to-dos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1.2rem;
+    padding-left: 0.1rem;
+  }
+}

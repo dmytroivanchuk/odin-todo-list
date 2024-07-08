@@ -10,15 +10,18 @@ import inboxIcon from "./inbox.svg";
 import circleOutlineIcon from "./circle-outline.svg";
 import createContentComponent from "./components/content/content";
 import createContentFooterComponent from "./components/content-footer/content-footer";
+import createProjectComponent from "./components/content/project/project";
 
 const body = document.querySelector("body");
 const storage = new Storage();
+const content = createContentComponent();
 initializeInbox();
 initializeStartingProject();
 addSidebar();
 addContent();
 addSidebarFooter();
 addContentFooter();
+addProject();
 
 function initializeInbox() {
   const inbox = new List();
@@ -95,7 +98,6 @@ function addSidebar() {
 }
 
 function addContent() {
-  const content = createContentComponent();
   body.append(content);
 }
 
@@ -107,4 +109,19 @@ function addSidebarFooter() {
 function addContentFooter() {
   const contentFooter = createContentFooterComponent();
   body.append(contentFooter);
+}
+
+function addProject() {
+  const testProject = storage.getProjects()[0];
+  const toDosInfo = testProject.toDos.map((toDo) => ({
+    done: toDo.done,
+    title: toDo.title,
+  }));
+  const project = createProjectComponent({
+    done: testProject.done,
+    title: testProject.title,
+    description: testProject.description,
+    toDosInfo,
+  });
+  content.append(project);
 }

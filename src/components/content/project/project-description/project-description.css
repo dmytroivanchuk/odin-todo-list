@@ -1,0 +1,13 @@
+.project-description {
+  font-size: 0.9rem;
+  caret-color: #0162c1;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:empty::before {
+    content: attr(data-placeholder);
+    color: #b0b2b8;
+  }
+}

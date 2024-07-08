@@ -2,4 +2,5 @@
   grid-area: content;
   padding: 5rem;
   background-color: #ffffff;
+  overflow-y: auto;
 }

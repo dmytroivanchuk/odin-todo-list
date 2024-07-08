@@ -1,7 +1,6 @@
 import "./sidebar.css";
-import createListLabelComponent from "../list-label/list-label";
-import createProjectLabelComponent from "../project-label/project-label";
-import createNewButtonComponent from "../new-button/new-button";
+import createListLabelComponent from "./list-label/list-label";
+import createProjectLabelComponent from "./project-label/project-label";
 
 export default function createSidebarComponent({ listsInfo, projectsInfo }) {
   const aside = document.createElement("aside");

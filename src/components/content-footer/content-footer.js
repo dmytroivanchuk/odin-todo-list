@@ -1,5 +1,5 @@
 import "./content-footer.css";
-import createNewButtonComponent from "../new-button/new-button";
+import createNewButtonComponent from "../shared/new-button/new-button";
 
 export default function createContentFooterComponent() {
   const contentFooter = document.createElement("footer");
