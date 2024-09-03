@@ -14,11 +14,27 @@ export default class Storage {
     localStorage.setItem("projects", projectsJSON);
   }
 
-  getLists() {
-    return this.#lists;
+  getListIds() {
+    return this.#lists.map((list) => list.id);
   }
 
-  getProjects() {
-    return this.#projects;
+  getProjectIds() {
+    return this.#projects.map((project) => project.id);
+  }
+
+  getProject(projectId) {
+    return this.#projects.find((project) => project.id === projectId);
+  }
+
+  getList(listId) {
+    return this.#lists.find((list) => list.id === listId);
+  }
+
+  getToDoIds(projectId) {
+    return this.getProject(projectId).toDos.map((toDo) => toDo.id);
+  }
+
+  getToDo(toDoId, projectId) {
+    return this.getProject(projectId).toDos.find((toDo) => toDo.id === toDoId);
   }
 }

@@ -1,4 +1,4 @@
-.to-do-title-container {
+.to-do-title {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -9,7 +9,7 @@
     background-color: #cbe2ff;
   }
 
-  & .to-do-done {
+  & .to-do-title-done {
     width: 0.8rem;
     aspect-ratio: 1;
     border-radius: 0.2rem;
@@ -33,7 +33,7 @@
     }
   }
 
-  & .to-do-title {
+  & .to-do-title-title {
     font-size: 0.9rem;
   }
 }

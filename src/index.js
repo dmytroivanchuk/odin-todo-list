@@ -4,24 +4,25 @@ import Storage from "./model/storage";
 import ToDo from "./model/to-do";
 import Project from "./model/project";
 import List from "./model/list";
-import createSidebarComponent from "./components/sidebar/sidebar";
-import createSidebarFooterComponent from "./components/sidebar-footer/sidebar-footer";
+import createSidebar from "./components/sidebar/sidebar";
+import createSidebarFooter from "./components/sidebar-footer/sidebar-footer";
 import inboxIcon from "./inbox.svg";
 import circleOutlineIcon from "./circle-outline.svg";
 import createContentComponent from "./components/content/content";
-import createContentFooterComponent from "./components/content-footer/content-footer";
-import createProjectComponent from "./components/content/project/project";
+import createContentFooter from "./components/content-footer/content-footer";
+import createProject from "./components/content/project/project";
 
 const body = document.querySelector("body");
-const storage = new Storage();
+export const storage = new Storage();
 const content = createContentComponent();
+const startingProject = new Project();
 initializeInbox();
 initializeStartingProject();
 addSidebar();
 addContent();
 addSidebarFooter();
 addContentFooter();
-addProject();
+addStartingProject();
 
 function initializeInbox() {
   const inbox = new List();
@@ -31,6 +32,11 @@ function initializeInbox() {
 }
 
 function initializeStartingProject() {
+  startingProject.title = "Learn the basics";
+  startingProject.description =
+    "This project shows you everything you need to know to hit the ground running.";
+  startingProject.icon = circleOutlineIcon;
+
   const doubleClickToDo = new ToDo();
   doubleClickToDo.title = "Double-click this to-do";
   doubleClickToDo.description =
@@ -66,12 +72,7 @@ function initializeStartingProject() {
   doneToDo.description =
     "That’s all you really need to know. Feel free to start adding your own projects and to-dos.";
 
-  const startingProject = new Project();
-  startingProject.title = "Learn the basics";
-  startingProject.description =
-    "This project shows you everything you need to know to hit the ground running.";
-  startingProject.icon = circleOutlineIcon;
-  startingProject.toDos = [
+  [
     doubleClickToDo,
     createToDo,
     deadlineToDo,
@@ -79,21 +80,15 @@ function initializeStartingProject() {
     checklistToDo,
     createProjectToDo,
     doneToDo,
-  ];
+  ].forEach((toDo) => {
+    toDo.projectID = startingProject.id;
+    startingProject.toDos.push(toDo);
+  });
   storage.addProject(startingProject);
 }
 
 function addSidebar() {
-  const listsInfo = storage.getLists().map((list) => ({
-    title: list.title,
-    icon: list.icon,
-    toDosCount: list.toDosCount,
-  }));
-  const projectsInfo = storage
-    .getProjects()
-    .map((project) => ({ title: project.title, icon: project.icon }));
-
-  const sidebar = createSidebarComponent({ listsInfo, projectsInfo });
+  const sidebar = createSidebar();
   body.append(sidebar);
 }
 
@@ -102,26 +97,16 @@ function addContent() {
 }
 
 function addSidebarFooter() {
-  const sidebarFooter = createSidebarFooterComponent();
+  const sidebarFooter = createSidebarFooter();
   body.append(sidebarFooter);
 }
 
 function addContentFooter() {
-  const contentFooter = createContentFooterComponent();
+  const contentFooter = createContentFooter();
   body.append(contentFooter);
 }
 
-function addProject() {
-  const testProject = storage.getProjects()[0];
-  const toDosInfo = testProject.toDos.map((toDo) => ({
-    done: toDo.done,
-    title: toDo.title,
-  }));
-  const project = createProjectComponent({
-    done: testProject.done,
-    title: testProject.title,
-    description: testProject.description,
-    toDosInfo,
-  });
+function addStartingProject() {
+  const project = createProject(startingProject.id);
   content.append(project);
 }

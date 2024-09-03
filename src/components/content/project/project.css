@@ -1,9 +1,9 @@
-.project-container {
+.project {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 
-  .to-dos-list {
+  .project-to-dos {
     display: flex;
     flex-direction: column;
     padding-top: 1.2rem;

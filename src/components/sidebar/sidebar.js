@@ -1,26 +1,30 @@
 import "./sidebar.css";
-import createListLabelComponent from "./list-label/list-label";
-import createProjectLabelComponent from "./project-label/project-label";
+import createListLabel from "./list-label/list-label";
+import createProjectLabel from "./project-label/project-label";
+import { storage } from "../../index";
 
-export default function createSidebarComponent({ listsInfo, projectsInfo }) {
+export default function createSidebar() {
   const aside = document.createElement("aside");
   aside.classList.add("sidebar");
   const nav = document.createElement("nav");
   nav.classList.add("navigation");
   const ul = document.createElement("ul");
   ul.classList.add("lists-projects-container");
-  listsInfo.forEach((listInfo) => {
+
+  storage.getListIds().forEach((listId) => {
     const li = document.createElement("li");
-    const listComponent = createListLabelComponent(listInfo);
-    li.append(listComponent);
+    const listLabel = createListLabel(listId);
+    li.append(listLabel);
     ul.append(li);
   });
-  projectsInfo.forEach((projectInfo) => {
+
+  storage.getProjectIds().forEach((projectId) => {
     const li = document.createElement("li");
-    const projectComponent = createProjectLabelComponent(projectInfo);
-    li.append(projectComponent);
+    const projectLabel = createProjectLabel(projectId);
+    li.append(projectLabel);
     ul.append(li);
   });
+
   nav.append(ul);
   aside.append(nav);
   return aside;

@@ -1,26 +1,23 @@
-import createProjectDescriptionComponent from "./project-description/project-description";
-import createProjectTitleComponent from "./project-title/project-title";
-import createToDoTitleComponent from "./to-do-title/to-do-title";
+import createProjectDescription from "./project-description/project-description";
+import createProjectTitle from "./project-title/project-title";
+import createToDoTitle from "./to-do-title/to-do-title";
 import "./project.css";
+import { storage } from "../../../index";
 
-export default function createProjectComponent({
-  done,
-  title,
-  description,
-  toDosInfo,
-}) {
-  const projectContainer = document.createElement("div");
-  projectContainer.classList.add("project-container");
-  const projectTitle = createProjectTitleComponent({ done, title });
-  const projectDescription = createProjectDescriptionComponent({ description });
-  const toDosList = document.createElement("ul");
-  toDosList.classList.add("to-dos-list");
-  toDosInfo.forEach((toDoInfo) => {
+export default function createProject(projectId) {
+  const project = document.createElement("div");
+  project.classList.add("project");
+  const projectTitle = createProjectTitle(projectId);
+  const projectDescription = createProjectDescription(projectId);
+  const projectToDos = document.createElement("ul");
+  projectToDos.classList.add("project-to-dos");
+  const toDoIds = storage.getToDoIds(projectId);
+  toDoIds.forEach((toDoId) => {
     const li = document.createElement("li");
-    const toDoTitle = createToDoTitleComponent(toDoInfo);
+    const toDoTitle = createToDoTitle(toDoId, projectId);
     li.append(toDoTitle);
-    toDosList.append(li);
+    projectToDos.append(li);
   });
-  projectContainer.append(projectTitle, projectDescription, toDosList);
-  return projectContainer;
+  project.append(projectTitle, projectDescription, projectToDos);
+  return project;
 }

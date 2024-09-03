@@ -1,22 +1,24 @@
+import { storage } from "../../../index";
 import "./list-label.css";
 
-export default function createListLabelComponent({ icon, title, toDosCount }) {
-  const listContainer = document.createElement("div");
-  listContainer.classList.add("list-label-container");
-  const listIcon = document.createElement("img");
-  listIcon.classList.add("list-label-icon");
-  listIcon.src = icon;
-  const listTitle = document.createElement("h3");
-  listTitle.classList.add("list-label-title");
-  listTitle.textContent = title;
-  listContainer.append(listIcon, listTitle);
+export default function createListLabel(listId) {
+  const list = storage.getList(listId);
+  const listLabel = document.createElement("div");
+  listLabel.classList.add("list-label");
+  const listLabelIcon = document.createElement("img");
+  listLabelIcon.classList.add("list-label-icon");
+  listLabelIcon.src = list.icon;
+  const listLabelTitle = document.createElement("h3");
+  listLabelTitle.classList.add("list-label-title");
+  listLabelTitle.textContent = list.title;
+  listLabel.append(listLabelIcon, listLabelTitle);
 
-  if (toDosCount != 0) {
-    const listToDosCount = document.createElement("h3");
-    listToDosCount.classList.add("list-label-to-dos-count");
-    listToDosCount.textContent = toDosCount;
-    listContainer.append(listToDosCount);
+  if (list.toDosCount != 0) {
+    const listLabelToDosCount = document.createElement("h3");
+    listLabelToDosCount.classList.add("list-label-to-dos-count");
+    listLabelToDosCount.textContent = list.toDosCount;
+    listLabel.append(listLabelToDosCount);
   }
 
-  return listContainer;
+  return listLabel;
 }

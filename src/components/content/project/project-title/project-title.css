@@ -1,10 +1,10 @@
-.project-title-container {
+.project-title {
   display: flex;
   gap: 0.7rem;
   align-items: first baseline;
   padding-left: 0.2rem;
 
-  & .project-done {
+  & .project-title-done {
     appearance: none;
     border-radius: 50%;
     outline: 0.2rem solid #0162c1;
@@ -18,7 +18,7 @@
     }
   }
 
-  & .project-title {
+  & .project-title-title {
     font-size: 1.5rem;
     font-weight: 600;
     caret-color: #0162c1;

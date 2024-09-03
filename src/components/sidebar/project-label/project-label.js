@@ -1,14 +1,17 @@
+import { storage } from "../../../index";
 import "./project-label.css";
 
-export default function createProjectLabelComponent({ title, icon }) {
-  const projectContainer = document.createElement("div");
-  projectContainer.classList.add("project-label-container");
-  const projectIcon = document.createElement("img");
-  projectIcon.classList.add("project-label-icon");
-  projectIcon.src = icon;
-  const projectTitle = document.createElement("h3");
-  projectTitle.textContent = title;
-  projectTitle.classList.add("project-label-title");
-  projectContainer.append(projectIcon, projectTitle);
-  return projectContainer;
+export default function createProjectLabel(projectId) {
+  const project = storage.getProject(projectId);
+
+  const projectLabel = document.createElement("div");
+  projectLabel.classList.add("project-label");
+  const projectLabelIcon = document.createElement("img");
+  projectLabelIcon.classList.add("project-label-icon");
+  projectLabelIcon.src = project.icon;
+  const projectLabelTitle = document.createElement("h3");
+  projectLabelTitle.textContent = project.title;
+  projectLabelTitle.classList.add("project-label-title");
+  projectLabel.append(projectLabelIcon, projectLabelTitle);
+  return projectLabel;
 }
