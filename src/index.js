@@ -6,8 +6,8 @@ import Project from "./model/project";
 import List from "./model/list";
 import createSidebar from "./components/sidebar/sidebar";
 import createSidebarFooter from "./components/sidebar-footer/sidebar-footer";
-import inboxIcon from "./inbox.svg";
-import circleOutlineIcon from "./circle-outline.svg";
+import inboxIcon from "./assets/inbox.svg";
+import circleOutlineIcon from "./assets/circle-outline.svg";
 import createContentComponent from "./components/content/content";
 import createContentFooter from "./components/content-footer/content-footer";
 import createProject from "./components/content/project/project";
@@ -81,7 +81,7 @@ function initializeStartingProject() {
     createProjectToDo,
     doneToDo,
   ].forEach((toDo) => {
-    toDo.projectID = startingProject.id;
+    toDo.projectId = startingProject.id;
     startingProject.toDos.push(toDo);
   });
   storage.addProject(startingProject);

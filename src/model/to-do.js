@@ -12,10 +12,11 @@ export default class ToDo {
   get id() {
     return this.#id;
   }
+  projectId = "";
   title = "";
   description = "";
   deadline = "";
-  priority = Priority.None.name;
+  priority = Priority.None;
   checklist = [];
   done = false;
 }

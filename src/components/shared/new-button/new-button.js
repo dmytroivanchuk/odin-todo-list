@@ -1,5 +1,5 @@
 import "./new-button.css";
-import plusIcon from "./plus.svg";
+import plusIcon from "../../../assets/plus.svg";
 
 export default function createNewButtonComponent(object) {
   const button = document.createElement("button");
