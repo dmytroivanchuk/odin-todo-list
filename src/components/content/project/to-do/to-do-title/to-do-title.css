@@ -2,12 +2,6 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 0.3rem;
-
-  &.background-blue {
-    background-color: #cbe2ff;
-  }
 
   & .to-do-title-done {
     width: 0.8rem;
@@ -35,5 +29,20 @@
 
   & .to-do-title-title {
     font-size: 0.9rem;
+    caret-color: #0162c1;
+    flex-grow: 1;
+    
+    &.cursor-default {
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:empty::before {
+      content: attr(data-placeholder);
+      color: #b0b2b8;
+    }
   }
 }
