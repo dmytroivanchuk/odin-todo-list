@@ -3,4 +3,8 @@
   padding: 5rem;
   background-color: #ffffff;
   overflow-y: auto;
+
+  &.background-dimmed {
+    background-color: #F9FAFB;
+  }
 }

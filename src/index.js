@@ -4,6 +4,7 @@ import Storage from "./model/storage";
 import ToDo from "./model/to-do";
 import Project from "./model/project";
 import List from "./model/list";
+import ChecklistItem from "./model/checklist-item";
 import createSidebar from "./components/sidebar/sidebar";
 import createSidebarFooter from "./components/sidebar-footer/sidebar-footer";
 import inboxIcon from "./assets/inbox.svg";
@@ -11,10 +12,11 @@ import circleOutlineIcon from "./assets/circle-outline.svg";
 import createContentComponent from "./components/content/content";
 import createContentFooter from "./components/content-footer/content-footer";
 import createProject from "./components/content/project/project";
+import Priority from "./model/priority";
 
 const body = document.querySelector("body");
 export const storage = new Storage();
-const content = createContentComponent();
+export const content = createContentComponent();
 const startingProject = new Project();
 initializeInbox();
 initializeStartingProject();
@@ -40,7 +42,15 @@ function initializeStartingProject() {
   const doubleClickToDo = new ToDo();
   doubleClickToDo.title = "Double-click this to-do";
   doubleClickToDo.description =
-    "You’re looking at a to-do! Complete it by clicking the checkbox on the left of this to-do.";
+    "You’re looking at a to-do! Complete it by clicking the checkbox on the left of this to-do. You’re looking at a to-do! Complete it by clicking the checkbox on the left of this to-do.";
+  const doubleClickChecklistItem = new ChecklistItem();
+  doubleClickChecklistItem.title = "Just double-click it."
+  doubleClickChecklistItem.done = true;
+  const finishChecklistItem = new ChecklistItem();
+  finishChecklistItem.title = "You've successfully finished it.";
+  doubleClickToDo.checklist = [doubleClickChecklistItem, finishChecklistItem];
+  doubleClickToDo.priority = Priority.High;
+  doubleClickToDo.deadline = "Thu, Oct 10"
 
   const createToDo = new ToDo();
   createToDo.title = "Create a new to-do";

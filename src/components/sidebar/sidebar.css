@@ -1,6 +1,6 @@
 .sidebar {
   grid-area: sidebar;
-  background-color: #f5f6f8;
+  background-color: #F9FAFB;
 
   & .navigation {
     padding: 0.8rem;
