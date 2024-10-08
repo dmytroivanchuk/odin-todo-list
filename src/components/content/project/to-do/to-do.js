@@ -39,7 +39,7 @@ export default function createToDo(toDoId, projectId) {
       toDoActions.append(toDoChecklistAction);
     }
 
-    if (toDo.priority != "None") {
+    if (toDo.priority.name != "None") {
       const toDoPriority = createToDoPriority(toDo.priority);
       toDoComponent.append(toDoPriority);
     } else {
