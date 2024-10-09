@@ -1,5 +1,17 @@
 .to-do-checklist-action {
-  :hover {
-    border: 1px solid #d2d4d9;
+  border: 1px solid transparent;
+  width: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+
+  &:hover {
+    border: 1px solid #E4E7EA;
+    border-radius: 0.2rem;
+  }
+
+  & .to-do-checklist-action-icon {
+    width: 1.25rem;
   }
 }
