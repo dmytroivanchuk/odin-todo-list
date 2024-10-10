@@ -1,39 +1,11 @@
-import "./preflight.css";
-import "./index.css";
-import Storage from "./model/storage";
-import ToDo from "./model/to-do";
-import Project from "./model/project";
-import List from "./model/list";
-import ChecklistItem from "./model/checklist-item";
-import createSidebar from "./components/sidebar/sidebar";
-import createSidebarFooter from "./components/sidebar-footer/sidebar-footer";
-import inboxIcon from "./assets/inbox.svg";
-import circleOutlineIcon from "./assets/circle-outline.svg";
-import createContent from "./components/content/content";
-import createContentFooter from "./components/content-footer/content-footer";
-import createProject from "./components/content/project/project";
-import Priority from "./model/priority";
+import Project from "../project";
+import ToDo from "../to-do";
+import Priority from "../priority";
+import ChecklistItem from "../checklist-item";
+import circleOutlineIcon from "../../assets/circle-outline.svg"
 
-const body = document.querySelector("body");
-export const storage = new Storage();
-export const content = createContent();
-const startingProject = new Project();
-initializeInbox();
-initializeStartingProject();
-addSidebar();
-addContent();
-addSidebarFooter();
-addContentFooter();
-addStartingProject();
-
-function initializeInbox() {
-  const inbox = new List();
-  inbox.title = "Inbox";
-  inbox.icon = inboxIcon;
-  storage.addList(inbox);
-}
-
-function initializeStartingProject() {
+export default function createStartingProject() {
+  const startingProject = new Project();
   startingProject.title = "Learn the basics";
   startingProject.description =
     "This project shows you everything you need to know to hit the ground running.";
@@ -82,7 +54,7 @@ function initializeStartingProject() {
   doneToDo.description =
     "That’s all you really need to know. Feel free to start adding your own projects and to-dos.";
 
-  [
+  const toDos = [
     doubleClickToDo,
     createToDo,
     deadlineToDo,
@@ -90,33 +62,12 @@ function initializeStartingProject() {
     checklistToDo,
     createProjectToDo,
     doneToDo,
-  ].forEach((toDo) => {
+  ]
+  
+  toDos.forEach((toDo) => {
     toDo.projectId = startingProject.id;
-    startingProject.toDos.push(toDo);
   });
-  storage.addProject(startingProject);
-}
-
-function addSidebar() {
-  const sidebar = createSidebar();
-  body.append(sidebar);
-}
-
-function addContent() {
-  body.append(content);
-}
-
-function addSidebarFooter() {
-  const sidebarFooter = createSidebarFooter();
-  body.append(sidebarFooter);
-}
-
-function addContentFooter() {
-  const contentFooter = createContentFooter();
-  body.append(contentFooter);
-}
-
-function addStartingProject() {
-  const project = createProject(startingProject.id);
-  content.append(project);
+  startingProject.toDos = toDos;
+  
+  return startingProject;
 }
