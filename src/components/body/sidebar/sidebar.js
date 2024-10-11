@@ -1,7 +1,7 @@
 import "./sidebar.css";
 import createListLabel from "./list-label/list-label";
 import createProjectLabel from "./project-label/project-label";
-import { storage } from "../../index";
+import app from "Src/index";
 
 export default function createSidebar() {
   const aside = document.createElement("aside");
@@ -11,16 +11,16 @@ export default function createSidebar() {
   const ul = document.createElement("ul");
   ul.classList.add("lists-projects-container");
 
-  storage.getListIds().forEach((listId) => {
+  app.lists.forEach(list => {
     const li = document.createElement("li");
-    const listLabel = createListLabel(listId);
+    const listLabel = createListLabel(list);
     li.append(listLabel);
     ul.append(li);
   });
 
-  storage.getProjectIds().forEach((projectId) => {
+  app.projects.forEach(project => {
     const li = document.createElement("li");
-    const projectLabel = createProjectLabel(projectId);
+    const projectLabel = createProjectLabel(project);
     li.append(projectLabel);
     ul.append(li);
   });

@@ -1,5 +1,5 @@
-import List from "../list";
-import inboxIcon from "../../assets/inbox.svg"
+import List from "Model/List";
+import inboxIcon from "AssetsShared/inbox.svg"
 
 export default function createInbox() {
   const inbox = new List();

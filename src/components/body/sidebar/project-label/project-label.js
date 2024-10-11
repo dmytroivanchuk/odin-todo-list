@@ -1,9 +1,6 @@
-import { storage } from "../../../index";
 import "./project-label.css";
 
-export default function createProjectLabel(projectId) {
-  const project = storage.getProject(projectId);
-
+export default function createProjectLabel(project) {
   const projectLabel = document.createElement("div");
   projectLabel.classList.add("project-label");
   const projectLabelIcon = document.createElement("img");

@@ -2,18 +2,14 @@ import createInbox from "./createInbox";
 import createStartingProject from "./createStartingProject";
 
 export default class App {
-  #projects;
-  #lists;
+  projects;
+  lists;
   #db;
   #component;
 
   constructor(db, component) {
     this.#db = db;
     this.#component = component;
-    this.#init();
-  }
-
-  #init() {
     if (this.#db.isEmpty) {
       const startingProject = createStartingProject();
       this.#db.saveProject(startingProject);
@@ -22,9 +18,11 @@ export default class App {
     }
 
     this.#db.init();
-    this.#projects = this.#db.getProjects();
-    this.#lists = this.#db.getLists();
+    this.projects = this.#db.getProjects();
+    this.lists = this.#db.getLists();
+  }
 
-    this.#component.createUserInterface();
+  init() {
+    this.#component.init();
   }
 }

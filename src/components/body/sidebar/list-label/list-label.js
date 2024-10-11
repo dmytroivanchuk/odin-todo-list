@@ -1,8 +1,6 @@
-import { storage } from "../../../index";
 import "./list-label.css";
 
-export default function createListLabel(listId) {
-  const list = storage.getList(listId);
+export default function createListLabel(list) {
   const listLabel = document.createElement("div");
   listLabel.classList.add("list-label");
   const listLabelIcon = document.createElement("img");

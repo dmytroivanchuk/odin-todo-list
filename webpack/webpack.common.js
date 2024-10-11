@@ -25,4 +25,13 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      Src: path.resolve(__dirname, '/src'),
+      Model: path.resolve(__dirname, '/src/model'),
+      Body: path.resolve(__dirname, '/src/components/body'),
+      Shared: path.resolve(__dirname, '/src/components/body/shared'),
+      AssetsShared: path.resolve(__dirname, '/src/components/body/assets-shared'),
+    },
+  },
 };

@@ -1,6 +1,6 @@
-import Priority from "./priority";
+import Priority from "./Priority";
 
-export default class ToDo {
+export default class Todo {
   constructor() {
     const uniqueId =
       Date.now().toString(36) +
