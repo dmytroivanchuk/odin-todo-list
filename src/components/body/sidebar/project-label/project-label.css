@@ -5,11 +5,16 @@
   border-radius: 0.3rem;
   align-items: center;
 
+  &.selected {
+    background-color: #E1E4E8;
+  }
+
   & .project-label-icon {
     width: 1.3rem;
   }
 
   & .project-label-title {
     font-size: 0.9rem;
+    cursor: default;
   }
 }

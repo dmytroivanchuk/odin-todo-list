@@ -2,27 +2,27 @@ import createInbox from "./createInbox";
 import createStartingProject from "./createStartingProject";
 
 export default class App {
-  projects;
-  lists;
-  #db;
-  #component;
+  database;
+  state;
+  component;
 
-  constructor(db, component) {
-    this.#db = db;
-    this.#component = component;
-    if (this.#db.isEmpty) {
-      const startingProject = createStartingProject();
-      this.#db.saveProject(startingProject);
+  constructor(state, database, component) {
+    this.database = database;
+    this.state = state;
+    this.component = component;
+    if (this.database.isEmpty) {
       const inbox = createInbox();
-      this.#db.saveList(inbox);
+      this.database.saveList(inbox);
+      const startingProject = createStartingProject();
+      const startingProject2 = createStartingProject();
+      this.database.saveProject(startingProject);
+      this.database.saveProject(startingProject2);
+      this.database.saveSelectedItemId(startingProject.id);
     }
 
-    this.#db.init();
-    this.projects = this.#db.getProjects();
-    this.lists = this.#db.getLists();
-  }
-
-  init() {
-    this.#component.init();
+    this.database.init();
+    this.state.projects = this.database.getProjects();
+    this.state.lists = this.database.getLists();
+    this.state.selectedItemId = this.database.getSelectedItemId();
   }
 }

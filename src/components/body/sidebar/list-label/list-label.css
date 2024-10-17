@@ -5,6 +5,10 @@
   border-radius: 0.3rem;
   align-items: center;
 
+  &.selected {
+    background-color: #E1E4E8;
+  }
+
   & .list-label-icon {
     width: 1.3rem;
   }
@@ -12,6 +16,7 @@
   & .list-label-title {
     font-weight: 500;
     font-size: 0.9rem;
+    cursor: default;
   }
 
   & .list-label-to-dos-count {

@@ -1,6 +1,7 @@
 export default class LocalStorage {
   #projectIdsKeyName = "projectIds";
   #listIdsKeyName = "listIds";
+  #selectedItemIdKeyName = "selectedItemId";
   #projectIds = [];
   #listIds = [];
 
@@ -21,6 +22,10 @@ export default class LocalStorage {
     return this.#getItems(this.#listIds);
   }
 
+  getSelectedItemId() {
+    return localStorage.getItem(this.#selectedItemIdKeyName);
+  }
+
   saveProject(project) {
     this.#projectIds.push(project.id);
     const projectIdsJson = JSON.stringify(this.#projectIds);
@@ -35,6 +40,10 @@ export default class LocalStorage {
     localStorage.setItem(this.#listIdsKeyName, listIdsJson);
     const listJson = JSON.stringify(list);
     localStorage.setItem(list.id, listJson);
+  }
+
+  saveSelectedItemId(id) {
+    localStorage.setItem(this.#selectedItemIdKeyName, id);
   }
 
   #getItems(itemIds) {

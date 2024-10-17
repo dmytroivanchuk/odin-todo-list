@@ -11,14 +11,14 @@ export default function createSidebar() {
   const ul = document.createElement("ul");
   ul.classList.add("lists-projects-container");
 
-  app.lists.forEach(list => {
+  app.state.lists.forEach(list => {
     const li = document.createElement("li");
     const listLabel = createListLabel(list);
     li.append(listLabel);
     ul.append(li);
   });
 
-  app.projects.forEach(project => {
+  app.state.projects.forEach(project => {
     const li = document.createElement("li");
     const projectLabel = createProjectLabel(project);
     li.append(projectLabel);
