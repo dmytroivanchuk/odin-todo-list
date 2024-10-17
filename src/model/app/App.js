@@ -24,5 +24,6 @@ export default class App {
     this.state.projects = this.database.getProjects();
     this.state.lists = this.database.getLists();
     this.state.selectedItemId = this.database.getSelectedItemId();
+    this.state.selectedTodoId = this.database.getSelectedTodoId();
   }
 }

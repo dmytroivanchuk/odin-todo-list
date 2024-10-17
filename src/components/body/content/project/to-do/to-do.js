@@ -68,7 +68,9 @@ export default function createToDo(toDo) {
 
   toDoComponent.addEventListener("click", () => {
     const previousSelectedTodo = document.querySelector(`.to-do[data-id=${app.state.selectedTodoId}]`);
-    previousSelectedTodo.classList.remove("selected");
+    if (previousSelectedTodo) {
+      previousSelectedTodo.classList.remove("selected");
+    }
     toDoComponent.classList.add("selected");
     const newSelectedTodoId = toDoComponent.dataset.id;
     app.state.selectedTodoId = newSelectedTodoId;

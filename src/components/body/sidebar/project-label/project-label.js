@@ -22,6 +22,11 @@ export default function createProjectLabel(project) {
     content.removeChild(content.firstChild);
     const projectComponent = createProject(project);
     content.append(projectComponent);
+
+    if (app.state.selectedTodoId) {
+      app.state.selectedTodoId = null;
+      app.database.saveSelectedTodoId(null);
+    }
   })
 
   const projectLabelIcon = document.createElement("img");

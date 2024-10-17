@@ -5,13 +5,10 @@ export default class Todo {
     const uniqueId =
       Date.now().toString(36) +
       Math.random().toString(36).substring(2, 12).padStart(16, 0);
-    this.#id = uniqueId;
+    this.id = uniqueId;
   }
 
-  #id;
-  get id() {
-    return this.#id;
-  }
+  id;
   projectId = "";
   title = "";
   description = "";
