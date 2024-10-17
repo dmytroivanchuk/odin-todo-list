@@ -1,13 +1,15 @@
-import app from "Src/index";
 import "./list-label.css";
+import app from "Src/index";
 
 export default function createListLabel(list) {
   const listLabel = document.createElement("div");
   listLabel.classList.add("list-label");
   listLabel.dataset.id = list.id;
+
   if (listLabel.dataset.id === app.state.selectedItemId) {
     listLabel.classList.add("selected");
   }
+
   listLabel.addEventListener("click", () => {
     const previousSelectedItem = document.querySelector(`.list-label[data-id=${app.state.selectedItemId}], .project-label[data-id=${app.state.selectedItemId}]`);
     previousSelectedItem.classList.remove("selected");
@@ -16,6 +18,7 @@ export default function createListLabel(list) {
     app.state.selectedItemId = newSelectedItemId;
     app.database.saveSelectedItemId(newSelectedItemId);
   })
+  
   const listLabelIcon = document.createElement("img");
   listLabelIcon.classList.add("list-label-icon");
   listLabelIcon.src = list.icon;

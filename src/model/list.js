@@ -16,4 +16,5 @@ export default class List {
   get toDosCount() {
     return this.toDos.length;
   }
+  type = "List";
 }

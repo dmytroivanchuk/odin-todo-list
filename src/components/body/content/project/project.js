@@ -1,11 +1,9 @@
-import createProjectDescription from "./project-description/project-description";
-import createProjectTitle from "./project-title/project-title";
-import createToDo from "./to-do/to-do";
 import "./project.css";
-import { storage } from "../../../index";
+import createProjectTitle from "./project-title/project-title";
+import createProjectDescription from "./project-description/project-description";
+import createToDo from "./to-do/to-do";
 
-export default function createProject(projectId) {
-  const project = storage.getProject(projectId);
+export default function createProject(project) {
   const projectComponent = document.createElement("div");
   projectComponent.classList.add("project");
   const projectTitle = createProjectTitle(project.done, project.title);
@@ -14,11 +12,10 @@ export default function createProject(projectId) {
   if (project.toDos.length > 0) {
     const projectToDos = document.createElement("ul");
     projectToDos.classList.add("project-to-dos");
-    const toDoIds = storage.getToDoIds(projectId);
-    toDoIds.forEach((toDoId) => {
+    project.toDos.forEach(toDo => {
       const li = document.createElement("li");
-      const toDo = createToDo(toDoId, projectId);
-      li.append(toDo);
+      const toDoComponent = createToDo(toDo);
+      li.append(toDoComponent);
       projectToDos.append(li);
     });
     projectComponent.append(projectToDos);

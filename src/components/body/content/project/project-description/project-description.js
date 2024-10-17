@@ -1,4 +1,3 @@
-import { storage } from "../../../../index";
 import "./project-description.css";
 
 export default function createProjectDescription(description) {

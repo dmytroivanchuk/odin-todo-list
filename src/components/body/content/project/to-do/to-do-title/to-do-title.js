@@ -1,4 +1,3 @@
-import { storage } from "../../../../../index";
 import "./to-do-title.css";
 
 export default function createToDoTitle(done, title) {

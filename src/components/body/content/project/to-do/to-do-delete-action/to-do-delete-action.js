@@ -1,5 +1,5 @@
-import deleteIcon from "../../../../../assets/delete.svg"
 import "./to-do-delete-action.css"
+import deleteIcon from "./delete.svg"
 
 export default function createToDoDeleteAction() {
   const toDoDeleteAction = document.createElement("button");

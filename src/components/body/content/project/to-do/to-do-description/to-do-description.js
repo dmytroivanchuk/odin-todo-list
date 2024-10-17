@@ -1,4 +1,3 @@
-import { storage } from "../../../../../index";
 import "./to-do-description.css";
 
 export default function createToDoDescription(description) {

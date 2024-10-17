@@ -1,5 +1,5 @@
-import priorityIcon from "../../../../../assets/priority.svg"
 import "./to-do-priority-action.css"
+import priorityIcon from "./priority.svg"
 
 export default function createToDoPriorityAction() {
   const toDoPriorityAction = document.createElement("button");

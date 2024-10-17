@@ -1,5 +1,5 @@
-import moveIcon from "../../../../../assets/move.svg"
 import "./to-do-move-action.css"
+import moveIcon from "./move.svg"
 
 export default function createToDoMoveAction() {
   const toDoMoveAction = document.createElement("button");

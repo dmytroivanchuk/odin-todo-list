@@ -1,4 +1,3 @@
-import { storage } from "../../../../index";
 import "./project-title.css";
 
 export default function createProjectTitle(done, title) {

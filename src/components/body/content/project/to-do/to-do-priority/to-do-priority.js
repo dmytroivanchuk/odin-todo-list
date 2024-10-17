@@ -1,9 +1,8 @@
-import priorityLowIcon from "../../../../../assets/priority-low.svg"
-import priorityMediumIcon from "../../../../../assets/priority-medium.svg"
-import priorityHighIcon from "../../../../../assets/priority-high.svg"
-import removeIcon from "../../../../../assets/remove.svg"
 import "./to-do-priority.css"
-import Priority from "../../../../../model/priority"
+import priorityLowIcon from "./priority-low.svg"
+import priorityMediumIcon from "./priority-medium.svg"
+import priorityHighIcon from "./priority-high.svg"
+import removeIcon from "AssetsShared/remove.svg"
 
 export default function createToDoPriority(priority) {
   const toDoPriority = document.createElement("div");

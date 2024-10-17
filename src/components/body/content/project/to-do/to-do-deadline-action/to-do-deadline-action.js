@@ -1,5 +1,5 @@
-import deadlineActionIcon from "../../../../../assets/deadline-action.svg"
 import "./to-do-deadline-action.css"
+import deadlineActionIcon from "./deadline-action.svg"
 
 export default function createToDoDeadlineAction() {
   const toDoDeadlineAction = document.createElement("button");

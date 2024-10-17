@@ -12,4 +12,5 @@ export default class Project {
   icon = "";
   toDos = [];
   done = false;
+  type = "Project";
 }

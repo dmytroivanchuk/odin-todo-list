@@ -1,25 +1,30 @@
-import createToDoTitle from "./to-do-title/to-do-title";
 import "./to-do.css";
+import createToDoTitle from "./to-do-title/to-do-title";
 import createToDoDescription from "./to-do-description/to-do-description";
-import { storage } from "../../../..";
 import createToDoChecklist from "./to-do-checklist/to-do-checklist";
-import createToDoChecklistAction from "./to-do-checklist-action/to-do-checklist-action";
 import createToDoPriority from "./to-do-priority/to-do-priority";
-import createToDoPriorityAction from "./to-do-priority-action/to-do-priority-action"
 import createToDoDeadline from "./to-do-deadline/to-do-deadline";
+import createToDoChecklistAction from "./to-do-checklist-action/to-do-checklist-action";
+import createToDoPriorityAction from "./to-do-priority-action/to-do-priority-action"
 import createToDoDeadlineAction from "./to-do-deadline-action/to-do-deadline-action";
 import createToDoMoveAction from "./to-do-move-action/to-do-move-action";
 import createToDoDeleteAction from "./to-do-delete-action/to-do-delete-action";
-import { content } from "../../../../index";
+import app from "Src/index";
 
-export default function createToDo(toDoId, projectId) {
-  const toDo = storage.getToDo(toDoId, projectId);
+export default function createToDo(toDo) {
   const toDoComponent = document.createElement("div");
   toDoComponent.classList.add("to-do");
+  toDoComponent.dataset.id = toDo.id;
+
+  if (toDoComponent.dataset.id === app.state.selectedTodoId) {
+    toDoComponent.classList.add("selected");
+  }
+
   toDoComponent.addEventListener("dblclick", () => {
     toDoComponent.classList.remove("background-blue");
     toDoComponent.classList.add("expanded");
 
+    const content = document.querySelector(".content");
     content.classList.add("background-dimmed");
 
     toDoTitle.lastChild.contentEditable = "true";
@@ -62,13 +67,12 @@ export default function createToDo(toDoId, projectId) {
   })
 
   toDoComponent.addEventListener("click", () => {
-    const toDoComponents = document.querySelectorAll(".to-do");
-    toDoComponents.forEach((component) => {
-      if (component.classList.contains("background-blue")) {
-        component.classList.remove("background-blue");
-      }
-    });
-    toDoComponent.classList.add("background-blue");
+    const previousSelectedTodo = document.querySelector(`.to-do[data-id=${app.state.selectedTodoId}]`);
+    previousSelectedTodo.classList.remove("selected");
+    toDoComponent.classList.add("selected");
+    const newSelectedTodoId = toDoComponent.dataset.id;
+    app.state.selectedTodoId = newSelectedTodoId;
+    app.database.saveSelectedTodoId(newSelectedTodoId);
   });
 
   const toDoTitle = createToDoTitle(toDo.done, toDo.title);

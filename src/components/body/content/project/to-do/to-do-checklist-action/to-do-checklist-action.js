@@ -1,5 +1,5 @@
-import checklistIcon from "../../../../../assets/checklist.svg"
 import "./to-do-checklist-action.css"
+import checklistIcon from "./checklist.svg"
 
 export default function createToDoChecklistAction() {
   const toDoChecklistAction = document.createElement("button");

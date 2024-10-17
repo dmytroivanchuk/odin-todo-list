@@ -1,6 +1,6 @@
-import deadlineIcon from "../../../../../assets/deadline.svg"
-import removeIcon from "../../../../../assets/remove.svg"
 import "./to-do-deadline.css"
+import deadlineIcon from "./deadline.svg"
+import removeIcon from "AssetsShared/remove.svg"
 
 export default function createToDoDeadline(deadline) {
   const toDoDeadline = document.createElement("div");

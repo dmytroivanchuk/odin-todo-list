@@ -1,5 +1,5 @@
 import "./to-do-checklist.css";
-import removeIcon from "../../../../../assets/remove.svg";
+import removeIcon from "AssetsShared/remove.svg";
 
 export default function createToDoChecklist(checklist) {
   const toDoChecklist = document.createElement("div");
@@ -11,6 +11,7 @@ export default function createToDoChecklist(checklist) {
     toDoChecklistDone.type = "checkbox";
     toDoChecklistDone.classList.add("to-do-checklist-done");
     toDoChecklistDone.checked = checklistItem.done;
+    
     toDoChecklistDone.addEventListener("change", () => {
       if (toDoChecklistDone.checked) {
         toDoChecklistTitleTitle.classList.add("foreground-gray");

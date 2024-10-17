@@ -1,13 +1,16 @@
-import app from "Src/index";
+import createProject from "../../content/project/project";
 import "./project-label.css";
+import app from "Src/index";
 
 export default function createProjectLabel(project) {
   const projectLabel = document.createElement("div");
   projectLabel.classList.add("project-label");
   projectLabel.dataset.id = project.id;
+
   if (projectLabel.dataset.id === app.state.selectedItemId) {
     projectLabel.classList.add("selected");
   }
+
   projectLabel.addEventListener("click", () => {
     const previousSelectedItem = document.querySelector(`.project-label[data-id=${app.state.selectedItemId}], .list-label[data-id=${app.state.selectedItemId}]`);
     previousSelectedItem.classList.remove("selected");
@@ -15,7 +18,12 @@ export default function createProjectLabel(project) {
     const newSelectedItemId = projectLabel.dataset.id;
     app.state.selectedItemId = newSelectedItemId;
     app.database.saveSelectedItemId(newSelectedItemId);
+    const content = document.querySelector(".content");
+    content.removeChild(content.firstChild);
+    const projectComponent = createProject(project);
+    content.append(projectComponent);
   })
+
   const projectLabelIcon = document.createElement("img");
   projectLabelIcon.classList.add("project-label-icon");
   projectLabelIcon.src = project.icon;
