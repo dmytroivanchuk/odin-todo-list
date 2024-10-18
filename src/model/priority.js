@@ -17,30 +17,13 @@ export default class Priority {
   }
 
   static #constructable = false;
-  #name;
+  name;
 
   constructor(name) {
     if (!Priority.#constructable) {
       throw new TypeError("Priority is not constructable");
     }
-    this.#name = name;
+    this.name = name;
     Priority.#constructable = false;
-  }
-
-  get name() {
-    return this.#name;
-  }
-
-  get color() {
-    switch (this.#name) {
-      case Priority.None.name:
-        return "white";
-      case Priority.Low.name:
-        return "yellow";
-      case Priority.Medium.name:
-        return "orange";
-      case Priority.High.name:
-        return "red";
-    }
   }
 }

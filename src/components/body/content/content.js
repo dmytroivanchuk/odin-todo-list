@@ -13,5 +13,23 @@ export default function createContent() {
       break;
   }
 
+  main.addEventListener("click", (event) => {
+    const previousExpandedTodo = document.querySelector(`.to-do[data-id=${app.state.expandedTodoId}]`);
+    if (previousExpandedTodo) {
+      if (previousExpandedTodo === event.target || previousExpandedTodo.contains(event.target)) {
+        return;
+      }
+
+      previousExpandedTodo.classList.remove("expanded");
+      while (previousExpandedTodo.children.length > 1) {
+        previousExpandedTodo.removeChild(previousExpandedTodo.lastChild);
+      }
+      
+      main.classList.remove("dimmed");
+      app.state.expandedTodoId = null;
+      app.database.saveExpandedTodoId(null);
+    }
+  });
+
   return main;
 }

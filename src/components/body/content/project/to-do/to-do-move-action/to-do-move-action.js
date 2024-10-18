@@ -4,6 +4,7 @@ import moveIcon from "./move.svg"
 export default function createToDoMoveAction() {
   const toDoMoveAction = document.createElement("button");
   toDoMoveAction.classList.add("to-do-move-action");
+  toDoMoveAction.setAttribute("title", "Move");
   const toDoMoveActionIcon = document.createElement("img");
   toDoMoveActionIcon.classList.add("to-do-move-action-icon");
   toDoMoveActionIcon.src = moveIcon;

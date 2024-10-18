@@ -25,5 +25,6 @@ export default class App {
     this.state.lists = this.database.getLists();
     this.state.selectedItemId = this.database.getSelectedItemId();
     this.state.selectedTodoId = this.database.getSelectedTodoId();
+    this.state.expandedTodoId = this.database.getExpandedTodoId();
   }
 }
