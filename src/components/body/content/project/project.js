@@ -6,6 +6,7 @@ import createToDo from "./to-do/to-do";
 export default function createProject(project) {
   const projectComponent = document.createElement("div");
   projectComponent.classList.add("project");
+  projectComponent.dataset.id = project.id;
   const projectTitle = createProjectTitle(project.done, project.title);
   const projectDescription = createProjectDescription(project.description);
   projectComponent.append(projectTitle, projectDescription);

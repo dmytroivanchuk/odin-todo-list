@@ -1,3 +1,4 @@
+import app from "Src/index";
 import "./to-do-title.css";
 
 export default function createToDoTitle(done, title) {
@@ -7,6 +8,9 @@ export default function createToDoTitle(done, title) {
   toDoTitleDone.classList.add("to-do-title-done");
   toDoTitleDone.type = "checkbox";
   toDoTitleDone.checked = done;
+  toDoTitleDone.addEventListener("change", () => {
+    checkboxChanged(toDoTitleDone);
+  })
   const toDoTitleTitle = document.createElement("div");
   toDoTitleTitle.classList.add("to-do-title-title");
   toDoTitleTitle.classList.add("cursor-default");
@@ -14,4 +18,14 @@ export default function createToDoTitle(done, title) {
   toDoTitleTitle.textContent = title;
   toDoTitle.append(toDoTitleDone, toDoTitleTitle);
   return toDoTitle;
+}
+
+function checkboxChanged(checkbox) {
+  const todoId = checkbox.closest(".to-do").dataset.id;
+  const projectId = checkbox.closest(".project").dataset.id;
+  if (checkbox.checked) {
+    app.state.checkTodo(todoId, projectId, true);
+  } else {
+    app.state.checkTodo(todoId, projectId, false);
+  }
 }

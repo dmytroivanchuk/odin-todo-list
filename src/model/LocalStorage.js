@@ -44,6 +44,11 @@ export default class LocalStorage {
     localStorage.setItem(project.id, projectJson);
   }
 
+  updateProject(project) {
+    const projectJson = JSON.stringify(project);
+    localStorage.setItem(project.id, projectJson);
+  }
+
   saveList(list) {
     this.#listIds.push(list.id);
     const listIdsJson = JSON.stringify(this.#listIds);
