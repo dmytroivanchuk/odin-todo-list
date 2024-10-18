@@ -11,10 +11,16 @@ export default class State {
     return this.projects.find(project => project.id === id) || this.lists.find(list => list.id === id);
   }
 
-  checkTodo(todoId, projectId, value) {
+  checkTodo(todoId, projectId, done) {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
-    this.projects[projectIndex].toDos[todoIndex].done = value;
+    this.projects[projectIndex].toDos[todoIndex].done = done;
+    app.database.updateProject(this.projects[projectIndex]);
+  }
+
+  checkProject(projectId, done) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    this.projects[projectIndex].done = done;
     app.database.updateProject(this.projects[projectIndex]);
   }
 }
