@@ -9,7 +9,7 @@ export default function createToDoTitle(done, title) {
   toDoTitleDone.type = "checkbox";
   toDoTitleDone.checked = done;
   toDoTitleDone.addEventListener("change", () => {
-    checkboxChanged(toDoTitleDone);
+    doneChanged(toDoTitleDone);
   })
   const toDoTitleTitle = document.createElement("div");
   toDoTitleTitle.classList.add("to-do-title-title");
@@ -20,7 +20,7 @@ export default function createToDoTitle(done, title) {
   return toDoTitle;
 }
 
-function checkboxChanged(checkbox) {
+function doneChanged(checkbox) {
   const todoId = checkbox.closest(".to-do").dataset.id;
   const projectId = checkbox.closest(".project").dataset.id;
   if (checkbox.checked) {
