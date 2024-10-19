@@ -94,6 +94,10 @@ function createExpandedTodo(toDo, toDoComponent) {
 }
 
 function initSelectedTodo(toDoComponent, event) {
+  if (toDoComponent.dataset.id === app.state.expandedTodoId) {
+    return;
+  }
+
   const todoTitleDone = toDoComponent.querySelector(".to-do-title-done");
   if (event.target === todoTitleDone) {
     return;
