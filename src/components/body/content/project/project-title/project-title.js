@@ -35,4 +35,8 @@ function doneChanged(checkbox) {
 function titleChanged(component) {
   const projectId = component.closest(".project").dataset.id;
   app.state.changeProjectTitle(projectId, component.textContent);
+
+  const selectedItem = document.querySelector(`.project-label[data-id=${app.state.selectedItemId}]`);
+  const selectedItemTitle = selectedItem.querySelector(".project-label-title");
+  selectedItemTitle.textContent = component.textContent;
 }
