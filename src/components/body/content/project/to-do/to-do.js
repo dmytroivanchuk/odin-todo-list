@@ -25,8 +25,8 @@ export default function createToDo(toDo) {
     createExpandedTodo(toDo, toDoComponent);
   })
 
-  toDoComponent.addEventListener("click", () => {
-    initSelectedTodo(toDoComponent);
+  toDoComponent.addEventListener("click", (event) => {
+    initSelectedTodo(toDoComponent, event);
   });
 
   const toDoTitle = createToDoTitle(toDo.done, toDo.title);
@@ -93,7 +93,11 @@ function createExpandedTodo(toDo, toDoComponent) {
   toDoComponent.append(toDoActions);
 }
 
-function initSelectedTodo(toDoComponent) {
+function initSelectedTodo(toDoComponent, event) {
+  const todoTitleDone = toDoComponent.querySelector(".to-do-title-done");
+  if (event.target === todoTitleDone) {
+    return;
+  }
   const previousSelectedTodo = document.querySelector(`.to-do[data-id=${app.state.selectedTodoId}]`);
   if (previousSelectedTodo) {
     previousSelectedTodo.classList.remove("selected");
