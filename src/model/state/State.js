@@ -29,4 +29,10 @@ export default class State {
     this.projects[projectIndex].title = title;
     app.database.updateProject(this.projects[projectIndex]);
   }
+
+  changeProjectDescription(projectId, description) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    this.projects[projectIndex].description = description;
+    app.database.updateProject(this.projects[projectIndex]);
+  }
 }
