@@ -15,19 +15,32 @@ export default function createContent() {
 
   main.addEventListener("click", (event) => {
     const previousExpandedTodo = document.querySelector(`.to-do[data-id=${app.state.expandedTodoId}]`);
+    const previousSelectedTodo = document.querySelector(`.to-do[data-id=${app.state.selectedTodoId}]`);
+    const projectTodos = document.querySelector(".project-to-dos");
     if (previousExpandedTodo) {
       if (previousExpandedTodo === event.target || previousExpandedTodo.contains(event.target)) {
         return;
       }
 
       previousExpandedTodo.classList.remove("expanded");
+      const todoTitleTitle = previousExpandedTodo.querySelector(".to-do-title-title");
+      todoTitleTitle.contentEditable = "false";
+      todoTitleTitle.classList.add("cursor-default");
       while (previousExpandedTodo.children.length > 1) {
         previousExpandedTodo.removeChild(previousExpandedTodo.lastChild);
       }
-      
+
       main.classList.remove("dimmed");
       app.state.expandedTodoId = null;
       app.database.saveExpandedTodoId(null);
+    }
+    if (previousSelectedTodo) {
+      if (projectTodos === event.target || projectTodos.contains(event.target)) {
+        return;
+      }
+      previousSelectedTodo.classList.remove("selected");
+      app.state.selectedTodoId = null;
+      app.database.saveSelectedTodoId(null);
     }
   });
 
