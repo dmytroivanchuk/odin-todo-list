@@ -27,6 +27,13 @@ export default function createProjectLabel(project) {
       app.state.selectedTodoId = null;
       app.database.saveSelectedTodoId(null);
     }
+
+    if (app.state.expandedTodoId) {
+      const content = document.querySelector(".content");
+      content.classList.remove("dimmed");
+      app.state.expandedTodoId = null;
+      app.database.saveExpandedTodoId(null);
+    }
   })
 
   const projectLabelIcon = document.createElement("img");
