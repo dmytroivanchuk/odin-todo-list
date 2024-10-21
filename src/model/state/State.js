@@ -18,6 +18,13 @@ export default class State {
     app.database.updateProject(this.projects[projectIndex]);
   }
 
+  changeTodoTitle(todoId, projectId, title) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
+    this.projects[projectIndex].toDos[todoIndex].title = title;
+    app.database.updateProject(this.projects[projectIndex]);
+  }
+
   checkProject(projectId, done) {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     this.projects[projectIndex].done = done;

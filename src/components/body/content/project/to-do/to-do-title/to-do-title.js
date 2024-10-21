@@ -16,6 +16,9 @@ export default function createToDoTitle(done, title) {
   toDoTitleTitle.classList.add("cursor-default");
   toDoTitleTitle.dataset.placeholder = "New To-Do";
   toDoTitleTitle.textContent = title;
+  toDoTitleTitle.addEventListener("input", () => {
+    titleChanged(toDoTitleTitle);
+  })
   toDoTitle.append(toDoTitleDone, toDoTitleTitle);
   return toDoTitle;
 }
@@ -28,4 +31,10 @@ function doneChanged(checkbox) {
   } else {
     app.state.checkTodo(todoId, projectId, false);
   }
+}
+
+function titleChanged(component) {
+  const todoId = component.closest(".to-do").dataset.id;
+  const projectId = component.closest(".project").dataset.id;
+  app.state.changeTodoTitle(todoId, projectId, component.textContent);
 }
