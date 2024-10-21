@@ -1,4 +1,5 @@
 import app from "Src/index";
+import Priority from "Model/Priority";
 
 export default class State {
   projects;
@@ -53,6 +54,13 @@ export default class State {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
     this.projects[projectIndex].toDos[todoIndex].description = description;
+    app.database.updateProject(this.projects[projectIndex]);
+  }
+
+  removeTodoPriority(todoId, projectId) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
+    this.projects[projectIndex].toDos[todoIndex].priority = Priority.None;
     app.database.updateProject(this.projects[projectIndex]);
   }
 
