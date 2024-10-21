@@ -11,6 +11,22 @@ export default class State {
     return this.projects.find(project => project.id === id) || this.lists.find(list => list.id === id);
   }
 
+  checkChecklistItem(checklistItemId, todoId, projectId, done) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
+    const checklistItemIndex = this.projects[projectIndex].toDos[todoIndex].checklist.findIndex(checklistItem => checklistItem.id === checklistItemId);
+    this.projects[projectIndex].toDos[todoIndex].checklist[checklistItemIndex].done = done;
+    app.database.updateProject(this.projects[projectIndex]);
+  }
+
+  changeChecklistItemTitle(checklistItemId, todoId, projectId, title) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
+    const checklistItemIndex = this.projects[projectIndex].toDos[todoIndex].checklist.findIndex(checklistItem => checklistItem.id === checklistItemId);
+    this.projects[projectIndex].toDos[todoIndex].checklist[checklistItemIndex].title = title;
+    app.database.updateProject(this.projects[projectIndex]);
+  }
+
   checkTodo(todoId, projectId, done) {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
