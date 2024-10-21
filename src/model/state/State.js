@@ -27,6 +27,14 @@ export default class State {
     app.database.updateProject(this.projects[projectIndex]);
   }
 
+  removeChecklistItem(checklistItemId, todoId, projectId) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
+    const checklistItemIndex = this.projects[projectIndex].toDos[todoIndex].checklist.findIndex(checklistItem => checklistItem.id === checklistItemId);
+    this.projects[projectIndex].toDos[todoIndex].checklist.splice(checklistItemIndex, 1);
+    app.database.updateProject(this.projects[projectIndex]);
+  }
+
   checkTodo(todoId, projectId, done) {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);

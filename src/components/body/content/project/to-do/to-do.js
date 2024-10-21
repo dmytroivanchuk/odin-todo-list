@@ -63,10 +63,9 @@ function createExpandedTodo(toDo, toDoComponent) {
   const toDoActions = document.createElement("div");
   toDoActions.classList.add("to-do-actions");
 
-  if (toDo.checklist.length > 0) {
-    const toDoChecklist = createToDoChecklist(toDo.checklist);
-    toDoComponent.append(toDoChecklist);
-  } else {
+  const toDoChecklist = createToDoChecklist(toDo.checklist);
+  toDoComponent.append(toDoChecklist);
+  if (toDo.checklist.length === 0) {
     const toDoChecklistAction = createToDoChecklistAction();
     toDoActions.append(toDoChecklistAction);
   }

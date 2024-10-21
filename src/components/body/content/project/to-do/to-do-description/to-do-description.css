@@ -6,4 +6,9 @@
   &:focus {
     outline: none;
   }
+
+  &:empty::before {
+    content: attr(data-placeholder);
+    color: #b0b2b8;
+  }
 }
