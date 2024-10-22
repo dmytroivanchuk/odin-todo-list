@@ -1,0 +1,75 @@
+.to-do-checklist-title {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  border: 1px solid transparent;
+  padding-left: 0.6rem;
+
+  &:focus-within {
+    border: 1px solid #E4E7EA;
+    border-radius: 0.2rem;
+    background-color: #F2F4F6;
+  }
+
+  &:hover {
+    border: 1px solid #E4E7EA;
+    border-radius: 0.2rem;
+
+    & .to-do-checklist-remove {
+      visibility: visible;
+    }
+  }
+
+  & .to-do-checklist-done {
+    appearance: none;
+    border-radius: 50%;
+    border: 0.125rem solid #0162c1;
+    width: 0.69rem;
+    aspect-ratio: 1;
+
+    &:checked {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+
+      &::before {
+        content: "✓";
+        color: #828488;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  & .to-do-checklist-title-title {
+    font-size: 0.9rem;
+    flex-grow: 1;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.foreground-gray {
+      color: #828488;
+    }
+  }
+
+  & .to-do-checklist-remove {
+    visibility: hidden;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    align-self: stretch;
+    border-radius: 0.2rem;
+
+    &:hover {
+      background-color: #E7E9EC;
+    }
+
+    & .to-do-checklist-remove-icon {
+      width: 1rem;
+    }
+  }
+}
