@@ -40,9 +40,13 @@ export default class State {
   createChecklistItem(checklistItemId, todoId, projectId) {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
-    const checklistItemIndex = this.projects[projectIndex].toDos[todoIndex].checklist.findIndex(checklistItem => checklistItem.id === checklistItemId);
     const newChecklistItem = new ChecklistItem();
-    this.projects[projectIndex].toDos[todoIndex].checklist.splice(checklistItemIndex + 1, 0, newChecklistItem);
+    if (checklistItemId) {
+      const checklistItemIndex = this.projects[projectIndex].toDos[todoIndex].checklist.findIndex(checklistItem => checklistItem.id === checklistItemId);
+      this.projects[projectIndex].toDos[todoIndex].checklist.splice(checklistItemIndex + 1, 0, newChecklistItem);
+    } else {
+      this.projects[projectIndex].toDos[todoIndex].checklist.push(newChecklistItem);
+    }
     app.database.updateProject(this.projects[projectIndex]);
     return newChecklistItem;
   }
