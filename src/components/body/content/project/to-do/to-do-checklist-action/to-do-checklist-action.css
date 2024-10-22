@@ -6,6 +6,10 @@
   align-items: center;
   aspect-ratio: 1;
 
+  &.display-none {
+    display: none;
+  }
+
   &:hover {
     border: 1px solid #E4E7EA;
     border-radius: 0.2rem;

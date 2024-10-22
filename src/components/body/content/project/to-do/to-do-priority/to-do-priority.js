@@ -43,5 +43,8 @@ function removeButtonClicked(component) {
   const projectId = component.closest(".project").dataset.id;
   app.state.removeTodoPriority(todoId, projectId);
 
+  component.closest(".to-do")
+    .querySelector(".to-do-priority-action")
+    .classList.remove("display-none");
   component.closest(".to-do-priority").remove();
 }

@@ -31,5 +31,8 @@ function removeButtonClicked(component) {
   const projectId = component.closest(".project").dataset.id;
   app.state.removeTodoDeadline(todoId, projectId);
 
+  component.closest(".to-do")
+    .querySelector(".to-do-deadline-action")
+    .classList.remove("display-none");
   component.closest(".to-do-deadline").remove();
 }

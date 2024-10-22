@@ -39,7 +39,7 @@ export default function createToDoChecklist(checklist) {
     toDoChecklistRemove.classList.add("to-do-checklist-remove");
     toDoChecklistRemove.addEventListener("click", (event) => {
       event.stopPropagation();
-      removeButtonClicked(toDoChecklistRemove);
+      removeButtonClicked(toDoChecklistRemove, toDoChecklist);
     })
     const toDoChecklistRemoveIcon = document.createElement("img");
     toDoChecklistRemoveIcon.classList.add("to-do-checklist-remove-icon");
@@ -73,7 +73,7 @@ function titleChanged(component) {
   app.state.changeChecklistItemTitle(checklistItemId, todoId, projectId, component.textContent);
 }
 
-function removeButtonClicked(component) {
+function removeButtonClicked(component, checklist) {
   const checklistItem = component.closest(".to-do-checklist-title");
   const checklistItemId = checklistItem.dataset.id;
   const todoId = component.closest(".to-do").dataset.id;
@@ -81,4 +81,10 @@ function removeButtonClicked(component) {
   app.state.removeChecklistItem(checklistItemId, todoId, projectId);
 
   checklistItem.remove();
+
+  if (checklist.children.length === 0) {
+    checklist.closest(".to-do")
+    .querySelector(".to-do-checklist-action")
+    .classList.remove("display-none");
+  }
 }
