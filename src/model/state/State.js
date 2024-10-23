@@ -79,6 +79,13 @@ export default class State {
     app.database.updateProject(this.projects[projectIndex]);
   }
 
+  changeTodoPriority(todoId, projectId, priority) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
+    this.projects[projectIndex].toDos[todoIndex].priority = priority;
+    app.database.updateProject(this.projects[projectIndex]);
+  }
+
   removeTodoDeadline(todoId, projectId) {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);

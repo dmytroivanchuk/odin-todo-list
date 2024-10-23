@@ -1,13 +1,13 @@
 import "./to-do-priority.css"
-import priorityLowIcon from "./priority-low.svg"
-import priorityMediumIcon from "./priority-medium.svg"
-import priorityHighIcon from "./priority-high.svg"
+import priorityLowIcon from "AssetsShared/priority-low.svg"
+import priorityMediumIcon from "AssetsShared/priority-medium.svg"
+import priorityHighIcon from "AssetsShared/priority-high.svg"
 import removeIcon from "AssetsShared/remove.svg"
 import app from "Src/index"
 
 export default function createToDoPriority(priority) {
   const toDoPriority = document.createElement("div");
-  toDoPriority.classList.add("to-do-priority");
+  toDoPriority.classList.add("to-do-priority", "display-none");
   const toDoPriorityIcon = document.createElement("img");
   toDoPriorityIcon.classList.add("to-do-priority-icon");
   switch (priority.name) {
@@ -46,5 +46,5 @@ function removeButtonClicked(component) {
   component.closest(".to-do")
     .querySelector(".to-do-priority-action")
     .classList.remove("display-none");
-  component.closest(".to-do-priority").remove();
+  component.closest(".to-do-priority").classList.add("display-none");
 }

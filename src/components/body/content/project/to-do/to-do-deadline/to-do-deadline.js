@@ -5,7 +5,7 @@ import app from "Src/index";
 
 export default function createToDoDeadline(deadline) {
   const toDoDeadline = document.createElement("div");
-  toDoDeadline.classList.add("to-do-deadline");
+  toDoDeadline.classList.add("to-do-deadline", "display-none");
   toDoDeadline.addEventListener("click", (event) => {
     event.stopPropagation();
     removeButtonClicked(toDoDeadline);
@@ -34,5 +34,5 @@ function removeButtonClicked(component) {
   component.closest(".to-do")
     .querySelector(".to-do-deadline-action")
     .classList.remove("display-none");
-  component.closest(".to-do-deadline").remove();
+  component.closest(".to-do-deadline").classList.add("display-none");
 }

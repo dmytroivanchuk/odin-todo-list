@@ -68,25 +68,25 @@ function createExpandedTodo(toDo, toDoComponent) {
   const toDoDeadlineAction = createToDoDeadlineAction();
 
   const toDoChecklist = createToDoChecklist(toDo.checklist);
-  toDoComponent.append(toDoChecklist);
   if (toDo.checklist.length === 0) {
     toDoChecklistAction.classList.remove("display-none");
   }
 
+  const toDoPriority = createToDoPriority(toDo.priority);
   if (toDo.priority.name != "None") {
-    const toDoPriority = createToDoPriority(toDo.priority);
-    toDoComponent.append(toDoPriority);
+    toDoPriority.classList.remove("display-none");
   } else {
     toDoPriorityAction.classList.remove("display-none");
   }
 
+  const toDoDeadline = createToDoDeadline(toDo.deadline);
   if (toDo.deadline != "") {
-    const toDoDeadline = createToDoDeadline(toDo.deadline);
-    toDoComponent.append(toDoDeadline);
+    toDoDeadline.classList.remove("display-none");
   } else {
     toDoDeadlineAction.classList.remove("display-none");
   }
 
+  toDoComponent.append(toDoChecklist, toDoPriority, toDoDeadline);
   const toDoMoveAction = createToDoMoveAction();
   const toDoDeleteAction = createToDoDeleteAction();
   toDoActions.append(toDoChecklistAction, toDoPriorityAction, toDoDeadlineAction, toDoMoveAction, toDoDeleteAction);
