@@ -12,7 +12,7 @@ export default class Todo {
   projectId = "";
   title = "";
   description = "";
-  deadline = "";
+  deadline = null;
   priority = Priority.None;
   checklist = [];
   done = false;

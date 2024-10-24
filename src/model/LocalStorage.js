@@ -74,6 +74,9 @@ export default class LocalStorage {
     itemIds.forEach(id => {
       const itemJson = localStorage.getItem(id);
       const item = JSON.parse(itemJson);
+      if (item.type === "Project") {
+        item.deadline = new Date(item.deadline);
+      }
       items.push(item);
     });
     return items;

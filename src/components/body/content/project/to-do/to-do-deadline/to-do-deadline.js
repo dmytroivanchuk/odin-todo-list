@@ -15,7 +15,7 @@ export default function createToDoDeadline(deadline) {
   toDoDeadlineIcon.src = deadlineIcon;
   const toDoDeadlineTitle = document.createElement("p");
   toDoDeadlineTitle.classList.add("to-do-deadline-title");
-  toDoDeadlineTitle.textContent = deadline;
+  toDoDeadlineTitle.textContent = deadline.toString();
   const toDoDeadlineRemove = document.createElement("button");
   toDoDeadlineRemove.classList.add("to-do-deadline-remove");
   const toDoDeadlineRemoveIcon = document.createElement("img");

@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   aspect-ratio: 1;
+  position: relative;
 
   &.display-none {
     display: none;
@@ -17,5 +18,16 @@
 
   & .to-do-deadline-action-icon {
     width: 1.25rem;
+  }
+
+  & .air-datepicker {
+    &.display-none {
+      display: none;
+    }
+
+    &.position-absolute {
+      position: absolute;
+      top: 1.8rem;
+    }
   }
 }

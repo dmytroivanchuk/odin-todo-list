@@ -22,7 +22,7 @@ export default function createStartingProject() {
   finishChecklistItem.title = "You've successfully finished it.";
   doubleClickToDo.checklist = [doubleClickChecklistItem, finishChecklistItem];
   doubleClickToDo.priority = Priority.High;
-  doubleClickToDo.deadline = "Thu, Oct 10"
+  doubleClickToDo.deadline = new Date();
 
   const createToDo = new Todo();
   createToDo.title = "Create a new to-do";
