@@ -11,7 +11,8 @@ export default function createToDoPriorityAction() {
   const toDoPriorityAction = document.createElement("button");
   toDoPriorityAction.classList.add("to-do-priority-action", "display-none");
   toDoPriorityAction.setAttribute("title", "Priority");
-  toDoPriorityAction.addEventListener("click", () => {
+  toDoPriorityAction.addEventListener("click", (event) => {
+    event.stopPropagation();
     priorityActionClicked(toDoPriorityAction);
   });
   const toDoPriorityActionIcon = document.createElement("img");
@@ -30,6 +31,10 @@ export default function createToDoPriorityAction() {
 function priorityActionClicked(component) {
   const dropdown = component.querySelector(".to-do-priority-action-dropdown");
   dropdown.classList.remove("display-none");
+  const datepicker = component.closest(".to-do").querySelector(".air-datepicker");
+  if (datepicker && !datepicker.classList.contains("display-none")) {
+    datepicker.classList.add("display-none");
+  }
 }
 
 function createDropdownPriority(action, priority) {
