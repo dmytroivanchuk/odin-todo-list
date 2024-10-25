@@ -68,5 +68,6 @@ function dropdownProjectLabelClicked(component, newProjectId) {
   const todoId = component.closest(".to-do").dataset.id;
   const projectId = component.closest(".project").dataset.id;
   app.state.moveTodo(todoId, projectId, newProjectId);
+  component.closest(".content").classList.remove("dimmed");
   component.closest(".to-do").remove();
 }
