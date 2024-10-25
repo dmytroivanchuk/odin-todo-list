@@ -17,8 +17,8 @@ export default function createToDoDeadlineAction() {
   new AirDatepicker(toDoDeadlineAction, {
     locale: localeEn,
     classes: "display-none position-absolute",
-    onSelect({ date }) {
-      dateClicked(date, toDoDeadlineAction);
+    onSelect({ date, datepicker }) {
+      dateClicked(date, toDoDeadlineAction, datepicker);
     },
   });
   const toDoDeadlineActionIcon = document.createElement("img");
@@ -33,7 +33,8 @@ function deadlineActionClicked(component) {
   datepicker.classList.remove("display-none");
 }
 
-function dateClicked(date, action) {
+function dateClicked(date, action, datepicker) {
+  datepicker.selectedDates = [];
   const todoId = action.closest(".to-do").dataset.id;
   const projectId = action.closest(".project").dataset.id;
   app.state.changeTodoDeadline(todoId, projectId, date);

@@ -80,7 +80,7 @@ function createExpandedTodo(toDo, toDoComponent) {
   }
 
   const toDoDeadline = createToDoDeadline(toDo.deadline);
-  if (toDo.deadline != "") {
+  if (toDo.deadline != null) {
     toDoDeadline.classList.remove("display-none");
   } else {
     toDoDeadlineAction.classList.remove("display-none");
