@@ -21,6 +21,9 @@ export default function createToDo(toDo) {
   }
 
   toDoComponent.addEventListener("dblclick", () => {
+    if (toDoComponent.dataset.id === app.state.expandedTodoId) {
+      return;
+    }
     initExpandedTodo(toDoComponent);
     createExpandedTodo(toDo, toDoComponent);
   })
