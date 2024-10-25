@@ -34,6 +34,12 @@ function priorityActionClicked(component) {
   const datepicker = component.closest(".to-do").querySelector(".air-datepicker");
   if (datepicker && !datepicker.classList.contains("display-none")) {
     datepicker.classList.add("display-none");
+    return;
+  }
+  const projectLabelDropdown = component.closest(".to-do").querySelector(".to-do-move-action-dropdown");
+  if (projectLabelDropdown && !projectLabelDropdown.classList.contains("display-none")) {
+    projectLabelDropdown.classList.add("display-none");
+    return;
   }
 }
 

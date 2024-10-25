@@ -100,6 +100,17 @@ export default class State {
     app.database.updateProject(this.projects[projectIndex]);
   }
 
+  moveTodo(todoId, projectId, newProjectId) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
+    const todo = this.projects[projectIndex].toDos[todoIndex];
+    this.projects[projectIndex].toDos.splice(todoIndex, 1);
+    app.database.updateProject(this.projects[projectIndex]);
+    const newProjectIndex = this.projects.findIndex(project => project.id === newProjectId);
+    this.projects[newProjectIndex].toDos.push(todo);
+    app.database.updateProject(this.projects[newProjectIndex]);
+  }
+
   checkProject(projectId, done) {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     this.projects[projectIndex].done = done;

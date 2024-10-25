@@ -31,6 +31,16 @@ export default function createToDoDeadlineAction() {
 function deadlineActionClicked(component) {
   const datepicker = component.querySelector(".air-datepicker");
   datepicker.classList.remove("display-none");
+  const priorityActionDropdown = component.closest(".to-do").querySelector(".to-do-priority-action-dropdown");
+  if (priorityActionDropdown && !priorityActionDropdown.classList.contains("display-none")) {
+    priorityActionDropdown.classList.add("display-none");
+    return;
+  }
+  const projectLabelDropdown = component.closest(".to-do").querySelector(".to-do-move-action-dropdown");
+  if (projectLabelDropdown && !projectLabelDropdown.classList.contains("display-none")) {
+    projectLabelDropdown.classList.add("display-none");
+    return;
+  }
 }
 
 function dateClicked(date, action, datepicker) {

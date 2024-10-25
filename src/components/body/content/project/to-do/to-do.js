@@ -98,13 +98,20 @@ function createExpandedTodo(toDo, toDoComponent) {
 
 function initSelectedTodo(toDoComponent, event) {
   if (toDoComponent.dataset.id === app.state.expandedTodoId) {
-    const dropdown = toDoComponent.querySelector(".to-do-priority-action-dropdown");
-    if (dropdown && !dropdown.classList.contains("display-none")) {
-      dropdown.classList.add("display-none");
+    const priorityActionDropdown = toDoComponent.querySelector(".to-do-priority-action-dropdown");
+    if (priorityActionDropdown && !priorityActionDropdown.classList.contains("display-none")) {
+      priorityActionDropdown.classList.add("display-none");
+      return;
     }
     const datepicker = toDoComponent.querySelector(".air-datepicker");
     if (datepicker && !datepicker.classList.contains("display-none")) {
       datepicker.classList.add("display-none");
+      return;
+    }
+    const projectLabelDropdown = toDoComponent.querySelector(".to-do-move-action-dropdown");
+    if (projectLabelDropdown && !projectLabelDropdown.classList.contains("display-none")) {
+      projectLabelDropdown.classList.add("display-none");
+      return;
     }
     return;
   }
