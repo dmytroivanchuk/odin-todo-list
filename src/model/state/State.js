@@ -1,6 +1,7 @@
 import app from "Src/index";
 import Priority from "Model/Priority";
 import ChecklistItem from "Model/ChecklistItem"
+import Todo from "Model/Todo"
 
 export default class State {
   projects;
@@ -116,6 +117,14 @@ export default class State {
     const todoIndex = this.projects[projectIndex].toDos.findIndex(todo => todo.id === todoId);
     this.projects[projectIndex].toDos.splice(todoIndex, 1);
     app.database.updateProject(this.projects[projectIndex]);
+  }
+
+  createTodo(projectId) {
+    const projectIndex = this.projects.findIndex(project => project.id === projectId);
+    const newTodo = new Todo();
+    this.projects[projectIndex].toDos.push(newTodo);
+    app.database.updateProject(this.projects[projectIndex]);
+    return newTodo;
   }
 
   checkProject(projectId, done) {
