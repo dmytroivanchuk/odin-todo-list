@@ -2,6 +2,7 @@ import app from "Src/index";
 import Priority from "Model/Priority";
 import ChecklistItem from "Model/ChecklistItem"
 import Todo from "Model/Todo"
+import Project from "Model/Project"
 
 export default class State {
   projects;
@@ -143,5 +144,12 @@ export default class State {
     const projectIndex = this.projects.findIndex(project => project.id === projectId);
     this.projects[projectIndex].description = description;
     app.database.updateProject(this.projects[projectIndex]);
+  }
+
+  createProject() {
+    const newProject = new Project();
+    this.projects.push(newProject);
+    app.database.saveProject(newProject);
+    return newProject;
   }
 }
