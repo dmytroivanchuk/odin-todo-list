@@ -14,9 +14,7 @@ export default class App {
       const inbox = createInbox();
       this.database.saveList(inbox);
       const startingProject = createStartingProject();
-      const startingProject2 = createStartingProject();
       this.database.saveProject(startingProject);
-      this.database.saveProject(startingProject2);
       this.database.saveSelectedItemId(startingProject.id);
     }
 

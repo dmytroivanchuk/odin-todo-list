@@ -6,7 +6,7 @@ import app from "Src/index";
 export default function createContentFooter() {
   const contentFooter = document.createElement("footer");
   contentFooter.classList.add("content-footer");
-  const newToDoButton = createNewButton("To-Do");
+  const newToDoButton = createNewButton("Todo");
   newToDoButton.addEventListener("click", () => {
     createNewTodo();
   })
