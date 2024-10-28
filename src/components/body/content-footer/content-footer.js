@@ -15,6 +15,21 @@ export default function createContentFooter() {
 }
 
 function createNewTodo() {
+  const previousExpandedTodo = document.querySelector(`.to-do[data-id=${app.state.expandedTodoId}]`);
+  if (previousExpandedTodo) {
+    previousExpandedTodo.classList.remove("expanded");
+    const todoTitleTitle = previousExpandedTodo.querySelector(".to-do-title-title");
+    todoTitleTitle.contentEditable = "false";
+    todoTitleTitle.classList.add("cursor-default");
+    while (previousExpandedTodo.children.length > 1) {
+      previousExpandedTodo.removeChild(previousExpandedTodo.lastChild);
+    }
+
+    document.querySelector(".content").classList.remove("dimmed");
+    app.state.expandedTodoId = null;
+    app.database.saveExpandedTodoId(null);
+  }
+
   const project = document.querySelector(".content").querySelector(".project");
   const newTodo = app.state.createTodo(project.dataset.id);
   const li = document.createElement("li");
