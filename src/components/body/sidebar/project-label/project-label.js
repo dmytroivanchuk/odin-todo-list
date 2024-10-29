@@ -6,6 +6,9 @@ export default function createProjectLabel(project) {
   const projectLabel = document.createElement("div");
   projectLabel.classList.add("project-label");
   projectLabel.dataset.id = project.id;
+  if (project.type.name === "List") {
+    projectLabel.classList.add("margin-bottom");
+  }
 
   if (projectLabel.dataset.id === app.state.selectedProjectId) {
     projectLabel.classList.add("selected");
@@ -39,6 +42,9 @@ export default function createProjectLabel(project) {
   const projectLabelTitle = document.createElement("h3");
   projectLabelTitle.textContent = project.title;
   projectLabelTitle.classList.add("project-label-title");
+  if (project.type.name === "List") {
+    projectLabelTitle.classList.add("bold");
+  }
   projectLabel.append(projectLabelIcon, projectLabelTitle);
   return projectLabel;
 }

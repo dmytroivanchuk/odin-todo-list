@@ -11,6 +11,10 @@
     background-color: #E1E4E8;
   }
 
+  &.margin-bottom {
+    margin-bottom: 0.7rem;
+  }
+
   & .project-label-icon {
     width: 1.2rem;
   }
@@ -21,5 +25,9 @@
     white-space: nowrap;
     font-size: 0.9rem;
     cursor: default;
+
+    &.bold {
+      font-weight: 500;
+    }
   }
 }
