@@ -1,7 +1,7 @@
 .project-title {
   display: flex;
   gap: 0.7rem;
-  align-items: first baseline;
+  align-items: center;
   padding-left: 0.2rem;
 
   & .project-title-done {
@@ -16,6 +16,10 @@
       background-color: #0162c1;
       border-color: white;
     }
+  }
+
+  & .project-title-icon {
+    width: 1.9rem;
   }
 
   & .project-title-title {

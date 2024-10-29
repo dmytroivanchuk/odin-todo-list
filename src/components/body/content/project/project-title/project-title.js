@@ -1,16 +1,26 @@
 import "./project-title.css";
 import app from "index";
 
-export default function createProjectTitle(done, title) {
+export default function createProjectTitle(done, title, type, icon) {
   const projectTitle = document.createElement("div");
   projectTitle.classList.add("project-title");
-  const projectTitleDone = document.createElement("input");
-  projectTitleDone.type = "checkbox";
-  projectTitleDone.classList.add("project-title-done");
-  projectTitleDone.checked = done;
-  projectTitleDone.addEventListener("change", () => {
-    doneChanged(projectTitleDone);
-  });
+  switch (type.name) {
+    case "Project":
+      const projectTitleDone = document.createElement("input");
+      projectTitleDone.type = "checkbox";
+      projectTitleDone.classList.add("project-title-done");
+      projectTitleDone.checked = done;
+      projectTitleDone.addEventListener("change", () => {
+        doneChanged(projectTitleDone);
+      });
+      projectTitle.append(projectTitleDone);
+      break;
+    case "List":
+      const projectTitleIcon = document.createElement("img");
+      projectTitleIcon.classList.add("project-title-icon");
+      projectTitleIcon.src = icon;
+      projectTitle.append(projectTitleIcon);
+  }
   const projectTitleTitle = document.createElement("div");
   projectTitleTitle.classList.add("project-title-title");
   projectTitleTitle.contentEditable = "true";
@@ -19,7 +29,7 @@ export default function createProjectTitle(done, title) {
   projectTitleTitle.addEventListener("input", () => {
     titleChanged(projectTitleTitle);
   })
-  projectTitle.append(projectTitleDone, projectTitleTitle);
+  projectTitle.append(projectTitleTitle);
   return projectTitle;
 }
 

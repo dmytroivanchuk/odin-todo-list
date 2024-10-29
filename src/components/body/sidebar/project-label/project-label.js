@@ -40,12 +40,5 @@ export default function createProjectLabel(project) {
   projectLabelTitle.textContent = project.title;
   projectLabelTitle.classList.add("project-label-title");
   projectLabel.append(projectLabelIcon, projectLabelTitle);
-
-  if (project.type.name === "List" && project.todos.length > 0) {
-    const projectLabelTodosCount = document.createElement("h3");
-    projectLabelTodosCount.classList.add("project-label-todos-count");
-    projectLabelTodosCount.textContent = project.todos.length;
-    projectLabel.append(projectLabelTodosCount);
-  }
   return projectLabel;
 }
