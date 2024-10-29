@@ -1,6 +1,6 @@
 import "./content-footer.css";
 import createTodo from "../content/project/todo/todo";
-import createNewButton from "Shared/new-button/new-button";
+import createNewButton from "../shared/new-button/new-button";
 import app from "index";
 
 export default function createContentFooter() {

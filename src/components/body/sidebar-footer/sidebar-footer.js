@@ -1,5 +1,5 @@
 import "./sidebar-footer.css";
-import createNewButton from "Shared/new-button/new-button";
+import createNewButton from "../shared/new-button/new-button";
 import createProjectLabel from "../sidebar/project-label/project-label";
 import circleIcon from "AssetsShared/circle.svg"
 import app from "index";

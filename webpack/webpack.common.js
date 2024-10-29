@@ -29,8 +29,6 @@ module.exports = {
     alias: {
       index$: path.resolve(__dirname, '/src/index.js'),
       Model: path.resolve(__dirname, '/src/model'),
-      Body: path.resolve(__dirname, '/src/components/body'),
-      Shared: path.resolve(__dirname, '/src/components/body/shared'),
       AssetsShared: path.resolve(__dirname, '/src/components/body/assets-shared'),
     },
   },

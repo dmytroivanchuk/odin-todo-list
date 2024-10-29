@@ -1,4 +1,4 @@
-import createBody from "Body/body";
+import createBody from "../components/body/body";
 
 export default class Component {
   init() {
