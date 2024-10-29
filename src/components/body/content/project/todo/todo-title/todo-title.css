@@ -31,6 +31,7 @@
     flex-grow: 1;
     font-size: 0.9rem;
     caret-color: #0162c1;
+    user-select: none;
     
     &.cursor-default {
       cursor: default;
