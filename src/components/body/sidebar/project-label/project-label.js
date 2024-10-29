@@ -1,27 +1,25 @@
-import createProject from "../../content/project/project";
 import "./project-label.css";
-import app from "Src/index";
+import createProject from "../../content/project/project";
+import app from "index";
 
 export default function createProjectLabel(project) {
   const projectLabel = document.createElement("div");
   projectLabel.classList.add("project-label");
   projectLabel.dataset.id = project.id;
 
-  if (projectLabel.dataset.id === app.state.selectedItemId) {
+  if (projectLabel.dataset.id === app.state.selectedProjectId) {
     projectLabel.classList.add("selected");
   }
 
   projectLabel.addEventListener("click", () => {
-    const previousSelectedItem = document.querySelector(`.project-label[data-id=${app.state.selectedItemId}], .list-label[data-id=${app.state.selectedItemId}]`);
+    const previousSelectedItem = document.querySelector(`.project-label[data-id=${app.state.selectedProjectId}], .list-label[data-id=${app.state.selectedProjectId}]`);
     previousSelectedItem.classList.remove("selected");
     projectLabel.classList.add("selected");
-    const newSelectedItemId = projectLabel.dataset.id;
-    app.state.selectedItemId = newSelectedItemId;
-    app.database.saveSelectedItemId(newSelectedItemId);
-    const content = document.querySelector(".content");
-    content.removeChild(content.firstChild);
+    const newSelectedProjectId = projectLabel.dataset.id;
+    app.state.selectedProjectId = newSelectedProjectId;
+    app.database.saveSelectedProjectId(newSelectedProjectId);
     const projectComponent = createProject(project);
-    content.append(projectComponent);
+    document.querySelector(".project").replaceWith(projectComponent);
 
     if (app.state.selectedTodoId) {
       app.state.selectedTodoId = null;
@@ -29,8 +27,7 @@ export default function createProjectLabel(project) {
     }
 
     if (app.state.expandedTodoId) {
-      const content = document.querySelector(".content");
-      content.classList.remove("dimmed");
+      document.querySelector(".content").classList.remove("dimmed");
       app.state.expandedTodoId = null;
       app.database.saveExpandedTodoId(null);
     }
@@ -43,5 +40,12 @@ export default function createProjectLabel(project) {
   projectLabelTitle.textContent = project.title;
   projectLabelTitle.classList.add("project-label-title");
   projectLabel.append(projectLabelIcon, projectLabelTitle);
+
+  if (project.type.name === "List" && project.todos.length > 0) {
+    const projectLabelTodosCount = document.createElement("h3");
+    projectLabelTodosCount.classList.add("project-label-todos-count");
+    projectLabelTodosCount.textContent = project.todos.length;
+    projectLabel.append(projectLabelTodosCount);
+  }
   return projectLabel;
 }

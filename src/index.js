@@ -1,4 +1,4 @@
-import State from "Model/state/State";
+import State from "Model/State";
 import LocalStorage from "Model/LocalStorage";
 import Component from "Model/Component";
 import App from "Model/app/App";

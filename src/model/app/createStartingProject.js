@@ -3,28 +3,30 @@ import Todo from "Model/Todo";
 import Priority from "Model/Priority";
 import ChecklistItem from "Model/ChecklistItem";
 import circleIcon from "AssetsShared/circle.svg"
+import ProjectType from "Model/ProjectType";
 
 export default function createStartingProject() {
   const startingProject = new Project();
+  startingProject.type = ProjectType.Project;
   startingProject.title = "Learn the basics";
   startingProject.description =
     "This project shows you everything you need to know to hit the ground running.";
   startingProject.icon = circleIcon;
 
   const doubleClickToDo = new Todo();
-  doubleClickToDo.title = "Double-click this to-do";
+  doubleClickToDo.title = "Double-click this todo";
   doubleClickToDo.description =
-    "You’re looking at a to-do! Complete it by clicking the checkbox on the left.";
+    "You’re looking at a todo! Complete it by clicking the checkbox on the left.";
 
-  const createToDo = new Todo();
-  createToDo.title = "Create a new to-do";
-  createToDo.description =
+  const createTodo = new Todo();
+  createTodo.title = "Create a new todo";
+  createTodo.description =
     `Click the “+ New Todo“ button at the bottom of the page.`;
 
   const checklistToDo = new Todo();
   checklistToDo.title = "Go step by step with checklists";
   checklistToDo.description =
-    `Break a to-do down into smaller steps by adding a checklist. You could use it to track a daily routine, pack a suitcase, make a grocery list, and so on.
+    `Break a todo down into smaller steps by adding a checklist. You could use it to track a daily routine, pack a suitcase, make a grocery list, and so on.
       Click the checklist icon below to add a checklist. To remove checklist item, hover over it and click delete icon.`;
   const checklistItem1 = new ChecklistItem();
   checklistItem1.title = "Preheat the oven to 350ºF (175ºC)"
@@ -41,7 +43,7 @@ export default function createStartingProject() {
   const deadlineToDo = new Todo();
   deadlineToDo.title = "Set a deadline so you won’t forget";
   deadlineToDo.description =
-    "For those to-dos you absolutely cannot miss, setting deadlines will give you peace of mind. Click the flag icon below and pick your date. To delete an existing deadline, hover over it and click delete icon.";
+    "For those todos you absolutely cannot miss, setting deadlines will give you peace of mind. Click the flag icon below and pick your date. To delete an existing deadline, hover over it and click delete icon.";
   deadlineToDo.deadline = new Date();
 
   const priorityToDo = new Todo();
@@ -68,11 +70,11 @@ export default function createStartingProject() {
   const doneToDo = new Todo();
   doneToDo.title = "You're done!";
   doneToDo.description =
-    "That’s all you really need to know. Feel free to start adding your own projects and to-dos.";
+    "That’s all you really need to know. Feel free to start adding your own projects and todos.";
 
-  const toDos = [
+  startingProject.todos = [
     doubleClickToDo,
-    createToDo,
+    createTodo,
     checklistToDo,
     deadlineToDo,
     priorityToDo,
@@ -80,12 +82,7 @@ export default function createStartingProject() {
     deleteToDo,
     createProjectToDo,
     doneToDo,
-  ]
-
-  toDos.forEach((toDo) => {
-    toDo.projectId = startingProject.id;
-  });
-  startingProject.toDos = toDos;
+  ];
 
   return startingProject;
 }

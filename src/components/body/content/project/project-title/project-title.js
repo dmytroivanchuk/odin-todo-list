@@ -1,5 +1,5 @@
 import "./project-title.css";
-import app from "Src/index";
+import app from "index";
 
 export default function createProjectTitle(done, title) {
   const projectTitle = document.createElement("div");
@@ -36,7 +36,7 @@ function titleChanged(component) {
   const projectId = component.closest(".project").dataset.id;
   app.state.changeProjectTitle(projectId, component.textContent);
 
-  const selectedItem = document.querySelector(`.project-label[data-id=${app.state.selectedItemId}]`);
+  const selectedItem = document.querySelector(`.project-label[data-id=${app.state.selectedProjectId}]`);
   const selectedItemTitle = selectedItem.querySelector(".project-label-title");
   selectedItemTitle.textContent = component.textContent;
 }

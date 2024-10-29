@@ -2,7 +2,7 @@ import "./sidebar-footer.css";
 import createNewButton from "Shared/new-button/new-button";
 import createProjectLabel from "../sidebar/project-label/project-label";
 import circleIcon from "AssetsShared/circle.svg"
-import app from "Src/index";
+import app from "index";
 
 export default function createSidebarFooter() {
   const sidebarFooter = document.createElement("footer");
@@ -21,8 +21,8 @@ function createNewProject() {
   const li = document.createElement("li");
   const projectLabel = createProjectLabel(newProject);
   li.append(projectLabel);
-  document.querySelector(".sidebar").querySelector(".lists-projects-container").append(li);
+  document.querySelector(".project-label-container").append(li);
   const event = new MouseEvent("click");
   projectLabel.dispatchEvent(event);
-  document.querySelector(".content").querySelector(".project-title-title").focus();
+  document.querySelector(".project-title-title").focus();
 }

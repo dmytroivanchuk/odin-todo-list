@@ -1,15 +1,13 @@
 export default class LocalStorage {
   #projectIdsKeyName = "projectIds";
-  #listIdsKeyName = "listIds";
-  #selectedItemIdKeyName = "selectedItemId";
+  #selectedProjectIdKeyName = "selectedProjectId";
   #selectedTodoIdKeyName = "selectedTodoId";
   #expandedTodoIdKeyName = "expandedTodoId";
   #projectIds = [];
-  #listIds = [];
 
   init() {
-    this.#projectIds = this.#getIds(this.#projectIdsKeyName);
-    this.#listIds = this.#getIds(this.#listIdsKeyName);
+    const projectsIdsJson = localStorage.getItem(this.#projectIdsKeyName);
+    this.#projectIds = JSON.parse(projectsIdsJson);
   }
 
   get isEmpty() {
@@ -17,15 +15,20 @@ export default class LocalStorage {
   }
 
   getProjects() {
-    return this.#getItems(this.#projectIds);
+    let projects = [];
+    this.#projectIds.forEach(id => {
+      const projectJson = localStorage.getItem(id);
+      const project = JSON.parse(projectJson);
+      if (project.type.name === "Project") {
+        project.deadline = new Date(project.deadline);
+      }
+      projects.push(project);
+    });
+    return projects;
   }
 
-  getLists() {
-    return this.#getItems(this.#listIds);
-  }
-
-  getSelectedItemId() {
-    return localStorage.getItem(this.#selectedItemIdKeyName);
+  getSelectedProjectId() {
+    return localStorage.getItem(this.#selectedProjectIdKeyName);
   }
 
   getSelectedTodoId() {
@@ -49,16 +52,8 @@ export default class LocalStorage {
     localStorage.setItem(project.id, projectJson);
   }
 
-  saveList(list) {
-    this.#listIds.push(list.id);
-    const listIdsJson = JSON.stringify(this.#listIds);
-    localStorage.setItem(this.#listIdsKeyName, listIdsJson);
-    const listJson = JSON.stringify(list);
-    localStorage.setItem(list.id, listJson);
-  }
-
-  saveSelectedItemId(id) {
-    localStorage.setItem(this.#selectedItemIdKeyName, id);
+  saveSelectedProjectId(id) {
+    localStorage.setItem(this.#selectedProjectIdKeyName, id);
   }
 
   saveSelectedTodoId(id) {
@@ -67,24 +62,5 @@ export default class LocalStorage {
 
   saveExpandedTodoId(id) {
     localStorage.setItem(this.#expandedTodoIdKeyName, id);
-  }
-
-  #getItems(itemIds) {
-    let items = [];
-    itemIds.forEach(id => {
-      const itemJson = localStorage.getItem(id);
-      const item = JSON.parse(itemJson);
-      if (item.type === "Project") {
-        item.deadline = new Date(item.deadline);
-      }
-      items.push(item);
-    });
-    return items;
-  }
-
-  #getIds(idsKeyName) {
-    const idsJson = localStorage.getItem(idsKeyName);
-    const ids = JSON.parse(idsJson);
-    return ids;
   }
 }

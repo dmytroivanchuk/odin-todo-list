@@ -1,7 +1,7 @@
-import createToDo from "../content/project/to-do/to-do";
 import "./content-footer.css";
+import createTodo from "../content/project/todo/todo";
 import createNewButton from "Shared/new-button/new-button";
-import app from "Src/index";
+import app from "index";
 
 export default function createContentFooter() {
   const contentFooter = document.createElement("footer");
@@ -15,10 +15,10 @@ export default function createContentFooter() {
 }
 
 function createNewTodo() {
-  const previousExpandedTodo = document.querySelector(`.to-do[data-id=${app.state.expandedTodoId}]`);
+  const previousExpandedTodo = document.querySelector(`.todo[data-id=${app.state.expandedTodoId}]`);
   if (previousExpandedTodo) {
     previousExpandedTodo.classList.remove("expanded");
-    const todoTitleTitle = previousExpandedTodo.querySelector(".to-do-title-title");
+    const todoTitleTitle = previousExpandedTodo.querySelector(".todo-title-title");
     todoTitleTitle.contentEditable = "false";
     todoTitleTitle.classList.add("cursor-default");
     while (previousExpandedTodo.children.length > 1) {
@@ -33,10 +33,10 @@ function createNewTodo() {
   const project = document.querySelector(".content").querySelector(".project");
   const newTodo = app.state.createTodo(project.dataset.id);
   const li = document.createElement("li");
-  const todoComponent = createToDo(newTodo);
+  const todoComponent = createTodo(newTodo);
   li.append(todoComponent);
-  project.querySelector(".project-to-dos").append(li);
+  project.querySelector(".project-todos").append(li);
   const event = new MouseEvent("dblclick");
   todoComponent.dispatchEvent(event);
-  todoComponent.querySelector(".to-do-title-title").focus();
+  todoComponent.querySelector(".todo-title-title").focus();
 }

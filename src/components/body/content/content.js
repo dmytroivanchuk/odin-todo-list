@@ -1,41 +1,37 @@
 import "./content.css";
 import createProject from "./project/project";
-import app from "Src/index";
+import app from "index";
 
 export default function createContent() {
-  const main = document.createElement("main");
-  main.classList.add("content");
-  const selectedItem = app.state.getSelectedItem(app.state.selectedItemId);
-  switch (selectedItem.type) {
-    case "Project":
-      const project = createProject(selectedItem);
-      main.append(project);
-      break;
-  }
+  const content = document.createElement("main");
+  content.classList.add("content");
+  const selectedProject = app.state.getSelectedProject(app.state.selectedProjectId);
+  const project = createProject(selectedProject);
+  content.append(project);
 
-  main.addEventListener("click", (event) => {
-    const previousExpandedTodo = document.querySelector(`.to-do[data-id=${app.state.expandedTodoId}]`);
-    const previousSelectedTodo = document.querySelector(`.to-do[data-id=${app.state.selectedTodoId}]`);
-    const projectTodos = document.querySelector(".project-to-dos");
+  content.addEventListener("click", (event) => {
+    const previousExpandedTodo = document.querySelector(`.todo[data-id=${app.state.expandedTodoId}]`);
+    const previousSelectedTodo = document.querySelector(`.todo[data-id=${app.state.selectedTodoId}]`);
+    const projecttodos = document.querySelector(".project-todos");
     if (previousExpandedTodo) {
       if (previousExpandedTodo === event.target || previousExpandedTodo.contains(event.target)) {
         return;
       }
 
       previousExpandedTodo.classList.remove("expanded");
-      const todoTitleTitle = previousExpandedTodo.querySelector(".to-do-title-title");
+      const todoTitleTitle = previousExpandedTodo.querySelector(".todo-title-title");
       todoTitleTitle.contentEditable = "false";
       todoTitleTitle.classList.add("cursor-default");
       while (previousExpandedTodo.children.length > 1) {
         previousExpandedTodo.removeChild(previousExpandedTodo.lastChild);
       }
 
-      main.classList.remove("dimmed");
+      content.classList.remove("dimmed");
       app.state.expandedTodoId = null;
       app.database.saveExpandedTodoId(null);
     }
     if (previousSelectedTodo) {
-      if (projectTodos === event.target || projectTodos.contains(event.target)) {
+      if (projecttodos === event.target || projecttodos.contains(event.target)) {
         return;
       }
       previousSelectedTodo.classList.remove("selected");
@@ -44,5 +40,5 @@ export default function createContent() {
     }
   });
 
-  return main;
+  return content;
 }

@@ -1,7 +1,7 @@
 .content {
   grid-area: content;
   padding: 5rem;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   overflow-y: auto;
 
   &.dimmed {

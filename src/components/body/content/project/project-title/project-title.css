@@ -6,11 +6,11 @@
 
   & .project-title-done {
     appearance: none;
+    width: 1.2rem;
+    aspect-ratio: 1;
     border-radius: 50%;
     outline: 0.2rem solid #0162c1;
     border: 0.15rem solid transparent;
-    width: 1.2rem;
-    aspect-ratio: 1;
 
     &:checked {
       background-color: #0162c1;
@@ -19,10 +19,10 @@
   }
 
   & .project-title-title {
+    flex-grow: 1;
     font-size: 1.5rem;
     font-weight: 600;
     caret-color: #0162c1;
-    flex-grow: 1;
 
     &:focus {
       outline: none;

@@ -1,11 +1,11 @@
 body {
-  height: 100vh;
   display: grid;
   grid-template-areas:
-    "sidebar content"
-    "sidebar-footer content-footer";
+  "sidebar content"
+  "sidebar-footer content-footer";
   grid-template-rows: 1fr auto;
   grid-template-columns: minmax(auto, 13rem) 1fr;
   gap: 1px;
+  height: 100vh;
   background-color: #e7e9ec;
 }

@@ -1,5 +1,5 @@
 import "./project-description.css";
-import app from "Src/index";
+import app from "index";
 
 export default function createProjectDescription(description) {
   const projectDescription = document.createElement("div");

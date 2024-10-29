@@ -12,16 +12,15 @@ export default class App {
     this.component = component;
     if (this.database.isEmpty) {
       const inbox = createInbox();
-      this.database.saveList(inbox);
+      this.database.saveProject(inbox);
+      this.database.saveSelectedProjectId(inbox.id);
       const startingProject = createStartingProject();
       this.database.saveProject(startingProject);
-      this.database.saveSelectedItemId(startingProject.id);
     }
 
     this.database.init();
     this.state.projects = this.database.getProjects();
-    this.state.lists = this.database.getLists();
-    this.state.selectedItemId = this.database.getSelectedItemId();
+    this.state.selectedProjectId = this.database.getSelectedProjectId();
     this.state.selectedTodoId = this.database.getSelectedTodoId();
     this.state.expandedTodoId = this.database.getExpandedTodoId();
   }

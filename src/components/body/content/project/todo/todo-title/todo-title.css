@@ -1,0 +1,48 @@
+.todo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  & .todo-title-done {
+    width: 0.8rem;
+    aspect-ratio: 1;
+    appearance: none;
+    border-radius: 0.2rem;
+    border: 1px solid #c1c3c6;
+
+    &:checked {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(1.1);
+      border-color: #0162c1;
+      background-color: #0162c1;
+
+      &::before {
+        content: "✓";
+        position: absolute;
+        color: #ffffff;
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  & .todo-title-title {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    caret-color: #0162c1;
+    
+    &.cursor-default {
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:empty::before {
+      content: attr(data-placeholder);
+      color: #b0b2b8;
+    }
+  }
+}

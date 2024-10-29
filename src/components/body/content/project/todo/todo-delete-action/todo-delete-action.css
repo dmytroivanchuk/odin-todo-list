@@ -1,0 +1,17 @@
+.todo-delete-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.6rem;
+  aspect-ratio: 1;
+  border: 1px solid transparent;
+
+  &:hover {
+    border-radius: 0.2rem;
+    border: 1px solid #E4E7EA;
+  }
+
+  & .todo-delete-action-icon {
+    width: 1.25rem;
+  }
+}

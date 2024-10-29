@@ -10,7 +10,7 @@ export default class Project {
   title = "";
   description = "";
   icon = "";
-  toDos = [];
+  todos = [];
   done = false;
-  type = "Project";
+  type;
 }

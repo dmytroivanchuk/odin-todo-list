@@ -1,4 +1,4 @@
-import Priority from "./Priority";
+import Priority from "Model/Priority";
 
 export default class Todo {
   constructor() {
@@ -9,7 +9,6 @@ export default class Todo {
   }
 
   id;
-  projectId = "";
   title = "";
   description = "";
   deadline = null;
