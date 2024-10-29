@@ -21,5 +21,5 @@ function deleteActionClicked(component) {
   const projectId = component.closest(".project").dataset.id;
   app.state.deleteTodo(todoId, projectId);
   component.closest(".content").classList.remove("dimmed");
-  component.closest(".todo").remove();
+  component.closest("li").remove();
 }
